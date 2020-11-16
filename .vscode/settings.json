@@ -1,0 +1,18 @@
+{
+  "css.validate": true,
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "stylelint.enable": true,
+  "typescript.tsserver.trace": "verbose",
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  }
+}
