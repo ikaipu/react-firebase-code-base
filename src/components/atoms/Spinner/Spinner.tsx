@@ -4,7 +4,7 @@ import { Loader, SemanticSIZES } from 'semantic-ui-react';
 const Spinner: FC<{ size?: SemanticSIZES }> = ({ size = 'medium' }) => (
   <div className="spinner">
     <Loader size={size} inline="centered" active>
-      loading...
+      now loading...
     </Loader>
   </div>
 );
