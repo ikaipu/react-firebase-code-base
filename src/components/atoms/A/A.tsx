@@ -6,6 +6,8 @@ export interface Props {
 }
 
 const A: FC<Props> = ({ children, onClick = () => null }) => {
+  console.log('test');
+
   return (
     <button className="link-button" type="button" onClick={onClick}>
       {children}
