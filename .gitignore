@@ -57,8 +57,6 @@ typings/
 
 # environment variables file
 .env
-#.env.*
-.firebaserc
 
 # misc
 .DS_Store
