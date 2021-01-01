@@ -41,7 +41,7 @@ export const usePostAction: PostHooks['usePostAction'] = () => {
 
   const createPost = async (params: CreatePostParams) => {
     const postRef = firestore.collection(`posts`);
-    const userRef = firestore.collection('companies').doc(params.userId);
+    const userRef = firestore.collection('users').doc(params.userId);
     const { userId: _, ...paramsWithoutUserId } = params;
 
     await postRef.add({

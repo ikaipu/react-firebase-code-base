@@ -1,6 +1,6 @@
 import functions from '../../base_function';
 
-const path = '/companies/{userId}/changeLogs/{changeLogId}';
+const path = '/users/{userId}/changeLogs/{changeLogId}';
 
 export const onCreate = functions()
   .firestore.document(path)
