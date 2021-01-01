@@ -43,7 +43,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn start:emulate # github actionsのVM内でlocalhostを立ち上げ
+          start: yarn start:emulate --project code-base-2337d # github actionsのVM内でlocalhostを立ち上げ
           wait-on: 'http://localhost:3000' # localhostが立ち上がるまでwaitさせる
           wait-on-timeout: 120
           record: true
