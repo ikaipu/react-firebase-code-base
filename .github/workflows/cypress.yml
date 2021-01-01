@@ -11,7 +11,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn start:emulate # launch local host on VM of github actions
+          start: yarn start:emulate --project code-base-2337d # launch local host on VM of github actions
           wait-on: 'http://localhost:3000' # wait until the url activation
           wait-on-timeout: 120
           record: true
