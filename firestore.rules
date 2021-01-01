@@ -1,12 +1,66 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function user(userId) {
+      return /databases/$(database)/documents/companies/$(userId);
+    }
+
     function isSignedIn() {
       return request.auth != null;
     }
+
+    function isValidUserParams(user) {
+      return 'name' in user && user.name is string
+        && 'address' in user && user.address is string
+        && 'phoneNumber' in user && (user.phoneNumber is number || user.phoneNumber == null)
+        && 'industry' in user && user.industry is string
+        && 'description' in user && (user.description is string || user.description == null)
+    }
+
+    function isValidUser(user) {
+      return user.size() == 7
+        && isValidUserParams(user)
+        && 'createdAt' in user && user.createdAt is timestamp
+        && 'updatedAt' in user && user.updatedAt is timestamp;
+    }
+
+    function isValidUserChangeLogs(user) {
+      return user.size() == 6
+        && isValidUserParams(user)
+        && 'createdAt' in user && user.createdAt is timestamp;
+    }
+
+    function isValidPost(post) {
+      return post.size() == 7
+        && 'name' in post && post.name is string
+        && 'description' in post && (post.description is string || post.description == null)
+        && 'postNum' in post && post.postNum is number
+        && 'viewedNum' in post && post.viewedNum is number
+        && 'userRef' in post && post.userRef == user(request.auth.uid)
+        && 'createdAt' in post && post.createdAt is timestamp
+        && 'updatedAt' in post && post.updatedAt is timestamp;
+    }
+
     match /posts/{postId} {
-      allow read: if
-          isSignedIn();
+      allow list;
+      allow create: if isSignedIn()
+        && isValidPost(request.resource.data) // need to add userRef security
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    match /companies/{userId} {
+      allow get;
+      allow create: if isSignedIn() && request.auth.uid == userId
+        && isValidUser(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      match /changeLogs/{changeLogId} {
+        allow create: if isSignedIn() && request.auth.uid == userId
+          && isValidUserChangeLogs(request.resource.data)
+          && request.resource.data.createdAt == request.time;
+      }
     }
   }
 }

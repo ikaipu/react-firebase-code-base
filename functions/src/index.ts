@@ -1,9 +1,9 @@
-import * as functions from 'firebase-functions';
+import admin from 'firebase-admin';
+import * as Firestore from './firestore';
+import serviceAccount from './code-base-firebase-adminsdk.json';
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+});
+
+export const firestore = { ...Firestore };

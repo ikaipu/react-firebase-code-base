@@ -1,0 +1,17 @@
+.linkButton {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  color: #4183c4;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.linkButton:hover,
+.linkButton:focus {
+  color: #1e70bf;
+  text-decoration: none;
+  outline: none;
+}

@@ -1,0 +1,9 @@
+.ui.form .field {
+  margin: 0;
+}
+
+.ui.form .error-message {
+  height: 1.8rem;
+  color: #9f3a38;
+  text-align: left;
+}
