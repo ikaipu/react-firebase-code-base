@@ -43,7 +43,7 @@ jobs:
       - name: Deploy Cloud Functions And Security Rules
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only functions,firestore:rules --project code-base-2337d
+          args: deploy --only functions,firestore:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 

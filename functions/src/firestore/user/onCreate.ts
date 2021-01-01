@@ -21,6 +21,6 @@ export default async (
 
   await admin
     .firestore()
-    .doc(`companies/${context.params.userId}`)
+    .doc(`users/${context.params.userId}`)
     .update(newParams);
 };

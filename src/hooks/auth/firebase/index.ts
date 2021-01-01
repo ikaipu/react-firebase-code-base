@@ -115,7 +115,7 @@ export const useAuthAction: AuthHooks['useAuthAction'] = () => {
 
     // const user = credencial.user!;
 
-    // const userRef = firestore.doc(`companies/${user.uid}`);
+    // const userRef = firestore.doc(`users/${user.uid}`);
 
     // return userRef
     //   .set({

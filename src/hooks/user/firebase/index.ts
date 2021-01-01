@@ -5,7 +5,7 @@ import { firestore as f } from 'firebase';
 
 // eslint-disable-next-line import/prefer-default-export
 export const useUser: UserHooks['useUser'] = (id = '') => {
-  const userRef = useFirestore().doc(`companies/${id}`);
+  const userRef = useFirestore().doc(`users/${id}`);
   const doc = useFirestoreDoc(userRef);
 
   if (!doc.exists) {
@@ -37,7 +37,7 @@ export const useUserAction: UserHooks['useUserAction'] = () => {
   const timestamp = useFirestore.Timestamp;
 
   const createUser = async (id: string, params: CreateUserParams) => {
-    const userRef = firestore.doc(`companies/${id}`);
+    const userRef = firestore.doc(`users/${id}`);
 
     await userRef.set({
       ...params,
@@ -47,7 +47,7 @@ export const useUserAction: UserHooks['useUserAction'] = () => {
   };
 
   const editUser = async (id: string, params: CreateUserParams) => {
-    const userRef = firestore.doc(`companies/${id}`);
+    const userRef = firestore.doc(`users/${id}`);
 
     await new Promise((resolve) => {
       const now = timestamp.now();
@@ -60,7 +60,7 @@ export const useUserAction: UserHooks['useUserAction'] = () => {
         }
       });
 
-      const changeLogsRef = firestore.collection(`companies/${id}/changeLogs`);
+      const changeLogsRef = firestore.collection(`users/${id}/changeLogs`);
       void changeLogsRef.add({
         ...params,
         createdAt: fieldValue.serverTimestamp(),

@@ -2,7 +2,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function user(userId) {
-      return /databases/$(database)/documents/companies/$(userId);
+      return /databases/$(database)/documents/users/$(userId);
     }
 
     function isSignedIn() {
@@ -49,7 +49,7 @@ service cloud.firestore {
         && request.resource.data.updatedAt == request.time;
     }
 
-    match /companies/{userId} {
+    match /users/{userId} {
       allow get;
       allow create: if isSignedIn() && request.auth.uid == userId
         && isValidUser(request.resource.data)
