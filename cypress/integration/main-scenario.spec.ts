@@ -21,7 +21,7 @@ context('Main scenario', () => {
     cy.get('[data-testid=industry] > .visible > :nth-child(1)').click();
     cy.get('[data-testid=description]').type('常識とはなにか。正解とはなにか。人と違うことは悪いことか。価値観にとらわれているだけでは自分たちが存在する意義がない。ソフトウェア開発を通して日本とは違う見方が世界にはあることを伝えるべく、サービスを展開しています。');
     cy.get('[data-testid=submit]').click();
-    cy.wait(2000);
+    cy.wait(4000);
     cy.get('[data-testid=user-card] > :nth-child(1) > .header').contains('テスト太郎');
 
      // create-post
@@ -32,7 +32,7 @@ context('Main scenario', () => {
     cy.get('.actions > .ui').click();
 
     cy.get(':nth-child(2) > :nth-child(1) > .content > .header').contains('テスト投稿');
-    cy.wait(2000);
+    cy.wait(4000);
 
     // edit-user
     cy.get('[data-testid=user-edit-button]').click();

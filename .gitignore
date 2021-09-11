@@ -38,6 +38,9 @@ typings/
 # Optional Firebase directory
 .firebase
 
+# firebase project related file
+# .firebaserc
+
 # Optional eslint cache
 .eslintcache
 

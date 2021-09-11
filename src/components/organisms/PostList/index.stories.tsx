@@ -25,8 +25,8 @@ Primary.args = {
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 'post2',
@@ -37,8 +37,8 @@ Primary.args = {
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 'post3',
@@ -49,8 +49,8 @@ Primary.args = {
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ],
 };

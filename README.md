@@ -1,44 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Web App Code Base
 
-## Available Scripts
+This project is used as an base code platform for web system applications.
 
-In the project directory, you can run:
+## Environments
 
-### `yarn start`
+### Frontend Main Libraries
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [TypeScript](https://www.typescriptlang.org/)
+- [React.js](https://reactjs.org/)
+  - concurrent mode(experimental)
+  - hooks
+- [React Router v6]()(experimental)
+- [Semantic UI]()
+- [Yup]()
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Backend Main Libraries
 
-### `yarn test`
+- [Firebase](https://firebase.google.com/)
+  - Firebase Auth
+  - Firebase FireStore
+  - Firebase Cloud Functions
+  - Firebase Storage
+  - Firebase Hosting
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Main Dev Tools
 
-### `yarn build`
+- [Storybook](https://storybook.js.org/)
+- [Chromatic](https://www.chromatic.com/)
+- [Cypress](https://www.cypress.io/)
+- Linters
+  - [Prettier](https://prettier.io/)
+  - [ESLint](https://eslint.org/)
+  - [stylelint](https://stylelint.io/)
+- [Github Actions](https://github.com/actions)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Preparation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- nodenv
+- firebase
+- VS Code (Recommended)
+- Create Firebase project
 
-### `yarn eject`
+### Set desired npm version
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```nodenv install```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```nodenv local```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```node -v```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Check if the node version is the same with [.node-version](.node-version)
 
-## Learn More
+## Set up Dependencies for the Frontend App
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```yarn```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Put Environment Configuration Files
+
+Put `.env` file under the project root folder.
+Refer to [.env.sample](.env.sample) to see the format.
+
+### Set up Dependencies for the Backend App
+
+```cd functions```
+
+```yarn```
+
+### Put Firebase Admin Configuration files
+
+Generate and download a firebase admin private key json file.
+Refer to [this flow](https://firebase.google.com/docs/admin/setup#initialize-sdk).
+You may get the json file with like this name.
+
+```<your-project-id>-firebase-adminsdk-XXXXX-XXXXXXXXXX.json```
+
+Change fhe file name to `code-base-firebase-adminsdk.json`
+
+Put it under `functions/src` folder
+
+### Build the Backend App
+
+```yarn build```
+
+## Getting Started
+
+### Please Set up These Before Running it
+
+You don't have to do it if you already did it then skip the section.
+
+#### Login to your firebase project from CLI
+
+```yarn firebase login```
+
+Choose your firebase project ID.
+
+```yarn firebase use <your-firebase-project-id>```
+
+### Let's Run the Apps Locally
+
+Check if you're already on the project root folder.
+
+Run
+
+```yarn emulate```
+
+Open new terminal window and Run
+
+```yarn start```
+
+You can browse the App to visit `http://localhost:3000` on your browser.
