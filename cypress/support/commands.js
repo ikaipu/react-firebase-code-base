@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('type', (originalFn, subject, text, options = {}) => {
+  options.delay = 50
+
+  return originalFn(subject, text, options)
+})

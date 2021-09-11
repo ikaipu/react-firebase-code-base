@@ -8,20 +8,20 @@ This project is used as an base code platform for web system applications.
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React.js](https://reactjs.org/)
-  - concurrent mode(experimental)
-  - hooks
-- [React Router v6]()(experimental)
-- [Semantic UI]()
-- [Yup]()
+  - [concurrent mode(experimental)](https://reactjs.org/docs/concurrent-mode-intro.html)
+  - [hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Router](https://github.com/remix-run/react-router)(v6 experimental)
+- [Semantic UI React](https://react.semantic-ui.com/)
+- [Yup](https://github.com/jquense/yup)
 
 ### Backend Main Libraries
 
 - [Firebase](https://firebase.google.com/)
-  - Firebase Auth
-  - Firebase FireStore
-  - Firebase Cloud Functions
-  - Firebase Storage
-  - Firebase Hosting
+  - [Firebase Auth](https://firebase.google.com/docs/auth)
+  - [Firebase FireStore](https://firebase.google.com/docs/firestore)
+  - [Firebase Cloud Functions](https://firebase.google.com/docs/functions)
+  - [Firebase Storage](https://firebase.google.com/docs/storage)
+  - [Firebase Hosting](https://firebase.google.com/docs/hosting)
 
 ### Main Dev Tools
 
@@ -38,10 +38,22 @@ This project is used as an base code platform for web system applications.
 
 ### Preparation
 
-- nodenv
-- firebase
-- VS Code (Recommended)
-- Create Firebase project
+Before installing the App development environment, check if you already have these.
+
+#### Install [nodenv](https://github.com/nodenv/nodenv)
+
+[How to Install](https://github.com/nodenv/nodenv#installation)
+
+#### Install [Firebase CLI](https://firebase.google.com/docs/cli)
+
+[How to Install](https://firebase.google.com/docs/cli#install_the_firebase_cli)
+
+#### Install [VS Code](https://code.visualstudio.com/) (Not required but recommended)
+
+#### Create your Firebase project
+
+This needs your own firebase project.
+Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase) to know how to create Firebase project
 
 ### Set desired npm version
 

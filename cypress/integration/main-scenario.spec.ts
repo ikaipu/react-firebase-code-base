@@ -2,10 +2,19 @@
 
 context('Main scenario', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000');
+    cy.visit('/');
   })
 
+  Cypress.env('FIREBASE_PROJECT_ID')
+
   it('Should pass main scenario', () => {
+    cy.request(
+      {
+        url: `http://localhost:9099/emulator/v1/projects/${Cypress.env('FIREBASE_PROJECT_ID')}/accounts`,
+        method: 'DELETE',
+        auth: {bearer: 'owner'}
+      });
+    cy.wait(4000);
     // sign-up
     cy.get('[data-testid=a]').click();
     cy.get('[data-testid=email]').type('test@sample.com');
