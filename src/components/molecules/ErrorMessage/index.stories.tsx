@@ -25,5 +25,5 @@ export const Error = Template.bind({});
 Error.args = {
   ...Primary.args,
   touched: true,
-  error: '入力は必須です',
+  error: 'Input is required',
 };

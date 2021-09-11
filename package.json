@@ -45,7 +45,8 @@
     "build-storybook": "build-storybook -s public",
     "cypress": "cypress open",
     "cypress:run": "cypress run",
-    "firebase:export": "firebase emulators:export ./firebase"
+    "firebase:export": "firebase emulators:export ./firebase",
+    "firebase": "firebase"
   },
   "eslintConfig": {
     "extends": "react-app"

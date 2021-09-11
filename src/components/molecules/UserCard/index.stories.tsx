@@ -16,5 +16,5 @@ const Template: Story<Props> = (args) => <Component {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  name: '田中太郎',
+  name: 'Ankunding, Hayes and Quigley',
 };

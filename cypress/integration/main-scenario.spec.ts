@@ -23,33 +23,33 @@ context('Main scenario', () => {
     cy.get('[data-testid=submit]').click();
 
     // create-user
-    cy.get('[data-testid=name]').type('テスト太郎');
-    cy.get('[data-testid=address]').type('テスト県テスト市テスト町テスト番地123');
+    cy.get('[data-testid=name]').type('Ankunding, Hayes and Quigley');
+    cy.get('[data-testid=address]').type('91364 Ruecker Village Apt. 995 Sunderland, MA 01375');
     cy.get('[data-testid=phoneNumber]').type('09012345678');
     cy.get('[data-testid=industry] > .dropdown').click();
     cy.get('[data-testid=industry] > .visible > :nth-child(1)').click();
-    cy.get('[data-testid=description]').type('常識とはなにか。正解とはなにか。人と違うことは悪いことか。価値観にとらわれているだけでは自分たちが存在する意義がない。ソフトウェア開発を通して日本とは違う見方が世界にはあることを伝えるべく、サービスを展開しています。');
+    cy.get('[data-testid=description]').type('Voluptatem commodi porro repudiandae reprehenderit rerum vel quisquam perferendis. Libero exercitationem sunt et voluptate sed qui. Molestias aperiam sit quia tenetur. Dolorum nulla fuga dolore et voluptatem.');
     cy.get('[data-testid=submit]').click();
     cy.wait(4000);
-    cy.get('[data-testid=user-card] > :nth-child(1) > .header').contains('テスト太郎');
+    cy.get('[data-testid=user-card] > :nth-child(1) > .header').contains('Ankunding, Hayes and Quigley');
 
      // create-post
     cy.get('[data-testid=create-post]').click();
-    cy.get('[data-testid=name]').type('テスト投稿');
-    cy.get('[data-testid=description]').type('常識とはなにか。正解とはなにか。人と違うことは悪いことか。価値観にとらわれているだけでは自分たちが存在する意義がない。ソフトウェア開発を通して日本とは違う見方が世界にはあることを伝えるべく、サービスを展開しています。');
+    cy.get('[data-testid=name]').type('Test Post');
+    cy.get('[data-testid=description]').type('Voluptatem commodi porro repudiandae reprehenderit rerum vel quisquam perferendis. Libero exercitationem sunt et voluptate sed qui. Molestias aperiam sit quia tenetur. Dolorum nulla fuga dolore et voluptatem.');
     cy.get('[data-testid=submit]').click();
     cy.get('.actions > .ui').click();
 
-    cy.get(':nth-child(2) > :nth-child(1) > .content > .header').contains('テスト投稿');
+    cy.get(':nth-child(2) > :nth-child(1) > .content > .header').contains('Test Post');
     cy.wait(4000);
 
     // edit-user
     cy.get('[data-testid=user-edit-button]').click();
-    cy.get('[data-testid=name] > #name').clear().type('テスト次郎');
+    cy.get('[data-testid=name] > #name').clear().type('Mr. Johnnie Christiansen');
     cy.get('[data-testid=submit]').click();
     cy.get('[data-testid=submit]').click();
     cy.get('.actions > .ui').click();
-    cy.get('[data-testid=user-card] > :nth-child(1) > .header').contains('テスト次郎');
+    cy.get('[data-testid=user-card] > :nth-child(1) > .header').contains('Mr. Johnnie Christiansen');
   })
 
   afterEach(() => {

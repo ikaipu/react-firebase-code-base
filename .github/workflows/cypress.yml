@@ -43,8 +43,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn start:emulate # github actionsのVM内でlocalhostを立ち上げ
-          wait-on: 'http://localhost:3000' # localhostが立ち上がるまでwaitさせる
+          start: yarn start, yarn emulate --project ${{ secrets.REACT_APP_PROJECT_ID }}
+          wait-on:  http://localhost:3000, http://localhost:4000
           wait-on-timeout: 120
           record: true
         env:
@@ -55,6 +55,7 @@ jobs:
           REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REACT_APP_FIREBASE_EMULATOR: true

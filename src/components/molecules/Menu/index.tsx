@@ -24,32 +24,32 @@ const Menu: React.FC<Props> = (props) => {
             }}
             className="icon"
             icon="search"
-            placeholder="ワードでクイック検索"
+            placeholder="Search"
           />
         </SemanticMenu.Item>
         <SemanticMenu.Item
           name="posts"
-          content="投稿一覧"
+          content="Posts"
           active={activeItemName === 'posts'}
           onClick={handleItemClick}
           position="right"
         />
         <SemanticMenu.Item
           name="myPage"
-          content="マイページ"
+          content="My Page"
           active={activeItemName === 'myPage'}
           onClick={handleItemClick}
         />
         <SemanticMenu.Item
           data-testid="sign-out"
           name="signOut"
-          content="ログアウト"
+          content="Sign out"
           active={activeItemName === 'signOut'}
           onClick={signOut}
         />
         <SemanticMenu.Item>
           <Button data-testid="create-post" primary onClick={goToCreatePost}>
-            新規掲載
+            Create Post
           </Button>
         </SemanticMenu.Item>
       </SemanticMenu>

@@ -27,7 +27,7 @@ export const FormError = Template.bind({});
 
 FormError.args = {
   ...Primary.args,
-  errorMessage: 'ネットワークエラーが発生しました。',
+  errorMessage: 'Network error has occurred.',
 };
 
 export const ValidationError = Template.bind({});
@@ -35,11 +35,11 @@ export const ValidationError = Template.bind({});
 ValidationError.args = {
   ...Primary.args,
   errors: {
-    name: '入力は必須です',
-    address: '入力は必須です',
-    phoneNumber: '入力は必須です',
-    industry: '入力は必須です',
-    description: '入力は必須です',
+    name: 'Input is required',
+    address: 'Input is required',
+    phoneNumber: 'Input is required',
+    industry: 'Input is required',
+    description: 'Input is required',
   },
   touched: {
     name: true,

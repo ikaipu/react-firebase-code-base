@@ -12,6 +12,6 @@ export default {
 } as Meta;
 
 // eslint-disable-next-line react/jsx-props-no-spreading
-const Template: Story = (args) => <Component {...args}>会員登録</Component>;
+const Template: Story = (args) => <Component {...args}>Register</Component>;
 
 export const Primary = Template.bind({});

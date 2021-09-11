@@ -2,7 +2,7 @@ import { setLocale } from 'yup';
 
 setLocale({
   mixed: {
-    required: '入力は必須です',
+    required: 'Input is required',
     oneOf: '入力したパスワードが異なります',
     notType: '正しい値を入力して下さい',
   },

@@ -1,9 +1,5 @@
 {
   "baseUrl": "http://localhost:3000",
-  "projectId": "iycb9w",
-  "env": {
-    "FIREBASE_PROJECT_ID": "code-base-2337d"
-  },
   "retries": {
     "runMode": 2,
     "openMode": 0

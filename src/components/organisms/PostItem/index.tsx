@@ -15,8 +15,8 @@ const PostItem: React.FC<Props> = (props) => {
       <Card.Content>
         <Card.Header>{name}</Card.Header>
         <Card.Meta>
-          <Label content="新着" color="green" />
-          <Label content="注目" color="red" />
+          <Label content="New" color="green" />
+          <Label content="Pickup" color="red" />
         </Card.Meta>
         <Card.Description>{description}</Card.Description>
         <Card.Meta>{userName}</Card.Meta>
