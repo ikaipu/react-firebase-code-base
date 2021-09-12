@@ -11,9 +11,9 @@ const MainPostLists: React.FC<Props> = (props) => {
 
   return (
     <>
-      <PostList title="注目の投稿" posts={posts} />
-      <PostList title="新着の投稿" posts={posts} />
-      <PostList title="応募中の投稿" posts={posts} />
+      <PostList title="Pickups" posts={posts} />
+      <PostList title="New Posts" posts={posts} />
+      <PostList title="Applied Posts" posts={posts} />
     </>
   );
 };

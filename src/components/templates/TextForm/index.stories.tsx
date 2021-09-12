@@ -20,25 +20,25 @@ const Template: Story<Props> = (args) => {
 export const Primary = Template.bind({});
 
 Primary.args = {
-  headerTitle: 'アカウントへログイン',
+  headerTitle: 'Login to your account',
   formElements: [
     {
       name: 'email' as const,
       type: 'email',
       icon: 'user',
-      placeholder: 'Eメールアドレス',
+      placeholder: 'Email address',
     },
     {
       name: 'password' as const,
       type: 'password',
       icon: 'lock',
-      placeholder: 'パスワード',
+      placeholder: 'Password',
     },
   ],
-  submitButtonText: 'ログイン',
+  submitButtonText: 'Login',
   bottomContent: (
     <Message>
-      初めての方は <a href="/sign-up">会員登録</a>
+      Or <a href="/sign-up">Sign up</a>
     </Message>
   ),
 };
@@ -47,7 +47,7 @@ export const FormError = Template.bind({});
 
 FormError.args = {
   ...Primary.args,
-  errorMessage: 'ネットワークエラーが発生しました。',
+  errorMessage: 'Network error has occurred.',
 };
 
 export const ValidationError = Template.bind({});
@@ -55,8 +55,8 @@ export const ValidationError = Template.bind({});
 ValidationError.args = {
   ...Primary.args,
   errors: {
-    email: '無効なメールアドレスです',
-    password: '入力は必須です',
+    email: 'Invalid email address',
+    password: 'Input is required',
   },
   touched: {
     email: true,

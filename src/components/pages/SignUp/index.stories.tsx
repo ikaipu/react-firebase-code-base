@@ -27,7 +27,7 @@ export const FormError = Template.bind({});
 
 FormError.args = {
   ...Primary.args,
-  errorMessage: 'ネットワークエラーが発生しました。',
+  errorMessage: 'Network error has occurred.',
 };
 
 export const ValidationError = Template.bind({});
@@ -35,9 +35,9 @@ export const ValidationError = Template.bind({});
 ValidationError.args = {
   ...Primary.args,
   errors: {
-    email: '無効なメールアドレスです',
-    password: 'パスワードは6文字以上で入力して下さい',
-    password2: '入力は必須です',
+    email: 'Invalid email address',
+    password: 'Password must be more than 6 characters',
+    password2: 'Input is required',
   },
   touched: {
     email: true,

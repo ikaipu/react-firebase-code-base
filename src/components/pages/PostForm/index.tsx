@@ -51,16 +51,16 @@ const PostForm: FC<Props> = (props) => {
   return (
     <>
       <Modal open={succeeded} size="mini" style={{ textAlign: 'center' }}>
-        <Modal.Header>掲載完了</Modal.Header>
+        <Modal.Header>Succeeded</Modal.Header>
         <Modal.Content>
-          <Modal.Description>投稿の掲載が完了しました</Modal.Description>
+          <Modal.Description>Succeeded to Submit</Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={onCloseModal}>OK</Button>
         </Modal.Actions>
       </Modal>
       <Helmet>
-        <title>投稿情報掲載</title>
+        <title>Input Post Info</title>
       </Helmet>
       <Grid
         textAlign="center"
@@ -69,7 +69,7 @@ const PostForm: FC<Props> = (props) => {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" textAlign="center">
-            投稿情報を掲載
+            Input your post
           </Header>
           {errorMessage !== '' && (
             <Message error style={{ textAlign: 'left' }}>
@@ -87,7 +87,7 @@ const PostForm: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="tag"
-                placeholder="投稿名"
+                placeholder="Title"
               />
               <FormInput
                 name="description"
@@ -98,7 +98,7 @@ const PostForm: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="sticky note"
-                placeholder="投稿概要"
+                placeholder="Description"
               />
               <Button
                 data-testid="submit"
@@ -107,7 +107,7 @@ const PostForm: FC<Props> = (props) => {
                 fluid
                 size="large"
               >
-                掲載
+                Submit
               </Button>
             </Segment>
           </Form>

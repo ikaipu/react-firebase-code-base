@@ -15,8 +15,8 @@ const Template: Story<Props> = (args) => <Component {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  name: 'ブロックチェーン（暗号通貨）DeFIシステムの開発',
+  name: 'Development of a blockchain (cryptocurrency) DeFI system',
   description:
-    'ブロックチェーン（暗号通貨）DeFIシステムの開発投稿です。ブロックチェーン に詳しく、注目を集めている DeFI に詳しい方を探しております。',
-  userName: '田中太郎',
+    'This is a development post for a blockchain (cryptocurrency) DeFI system. We are looking for someone who is familiar with blockchain and is familiar with DeFI which is getting a lot of attention.',
+  userName: 'Ankunding, Hayes and Quigley',
 };

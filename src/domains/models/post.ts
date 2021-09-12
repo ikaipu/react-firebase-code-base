@@ -1,15 +1,13 @@
 import { isDate } from 'date-fns';
+import { Base } from './base';
 
 export type Post = {
-  id: string;
   name: string;
   description: string | null;
   postNum: number;
   viewedNum: number;
   userId: string;
-  createdAt: Date | null;
-  updatedAt: Date | null;
-};
+} & Base;
 
 const isPost = (arg: unknown): arg is Post => {
   const o = arg as Post;

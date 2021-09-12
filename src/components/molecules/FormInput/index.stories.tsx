@@ -20,7 +20,7 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   icon: 'user',
-  placeholder: 'ユーザーIDを入力して下さい',
+  placeholder: 'Please input user ID',
   name: 'user',
 };
 
@@ -35,6 +35,6 @@ export const Error = Template.bind({});
 
 Error.args = {
   ...Primary.args,
-  error: '入力は必須です',
+  error: 'Input is required',
   touched: true,
 };

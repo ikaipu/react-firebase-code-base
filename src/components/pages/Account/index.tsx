@@ -58,16 +58,16 @@ const Account: FC<Props> = (props) => {
   return (
     <>
       <Modal open={succeeded} size="mini" style={{ textAlign: 'center' }}>
-        <Modal.Header>編集完了</Modal.Header>
+        <Modal.Header>Succeeded</Modal.Header>
         <Modal.Content>
-          <Modal.Description>情報の編集が完了しました</Modal.Description>
+          <Modal.Description>Succeeded to Submit</Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={onCloseModal}>OK</Button>
         </Modal.Actions>
       </Modal>
       <Helmet>
-        <title>登録情報登録</title>
+        <title>Input Account Info</title>
       </Helmet>
       <Grid
         textAlign="center"
@@ -76,7 +76,7 @@ const Account: FC<Props> = (props) => {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" textAlign="center">
-            登録情報を登録
+            Input your account info
           </Header>
           {errorMessage !== '' && (
             <Message error style={{ textAlign: 'left' }}>
@@ -94,7 +94,7 @@ const Account: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="tag"
-                placeholder="氏名"
+                placeholder="Name"
               />
               <FormInput
                 name="address"
@@ -105,7 +105,7 @@ const Account: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="map marker alternate"
-                placeholder="住所"
+                placeholder="Address"
               />
               <FormInput
                 name="phoneNumber"
@@ -116,19 +116,23 @@ const Account: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="phone"
-                placeholder="電話番号"
+                placeholder="Phone Number"
               />
               <FormDropdown
                 name="industry"
-                placeholder="働いている業界を選んで下さい"
+                placeholder="Your Work"
                 options={[
-                  { key: 'it', value: 'it', text: 'IT関連' },
+                  { key: 'it', value: 'it', text: 'IT' },
                   {
                     key: 'agriculture',
                     value: 'agriculture',
-                    text: '農林',
+                    text: 'Agriculture',
                   },
-                  { key: 'fisher', value: 'fisher', text: '漁業' },
+                  {
+                    key: 'aquaculture',
+                    value: 'aquaculture',
+                    text: 'Aquaculture',
+                  },
                 ]}
                 value={values.industry}
                 onBlur={onBlur}
@@ -145,7 +149,7 @@ const Account: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="sticky note"
-                placeholder="概要"
+                placeholder="Description"
               />
               <Button
                 data-testid="submit"
@@ -154,7 +158,7 @@ const Account: FC<Props> = (props) => {
                 fluid
                 size="large"
               >
-                登録
+                Submit
               </Button>
             </Segment>
           </Form>

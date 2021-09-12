@@ -1,6 +1,7 @@
 import React from 'react';
 import { useClient } from 'hooks/di';
 import { Post } from 'domains/models/post';
+import { Base } from 'domains/models/base';
 
 export type PostHooks = {
   usePosts(): {
@@ -11,11 +12,7 @@ export type PostHooks = {
   };
 };
 
-export type CreatePostParams = {
-  name: string;
-  description: string | null;
-  userId: string;
-};
+export type CreatePostParams = Omit<Post, keyof Base | 'postNum' | 'viewedNum'>;
 
 export const PostHooksContext = React.createContext<PostHooks | null>(null);
 

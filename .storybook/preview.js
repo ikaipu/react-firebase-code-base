@@ -45,7 +45,7 @@ export const decorators = [
         <UserHooksContext.Provider
           value={{
             useUser: () => ({
-              user: {name: '田中太郎'},
+              user: {name: 'Ankunding, Hayes and Quigley'},
             }),
             usePostAction: () => ({
               createPost: () => new Promise(() => null),

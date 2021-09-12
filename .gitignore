@@ -38,6 +38,9 @@ typings/
 # Optional Firebase directory
 .firebase
 
+# Optional Firebase file
+.firebaserc
+
 # Optional eslint cache
 .eslintcache
 
@@ -74,3 +77,4 @@ yarn-error.log*
 # cypress
 cypress/videos
 cypress/screenshots
+cypress.env.json

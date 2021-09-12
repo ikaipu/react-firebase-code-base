@@ -16,7 +16,7 @@ const UserCard: React.FC<Props> = (props) => {
       </Card.Content>
       <Card.Content extra textAlign="center">
         <Button data-testid="user-edit-button" onClick={onClick}>
-          登録情報編集
+          Edit User Info
         </Button>
       </Card.Content>
     </Card>

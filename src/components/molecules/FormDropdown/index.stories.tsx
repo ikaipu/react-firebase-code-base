@@ -20,15 +20,15 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   options: [
-    { key: 'it', value: 'it', text: 'IT関連' },
+    { key: 'it', value: 'it', text: 'IT' },
     {
       key: 'agriculture',
       value: 'agriculture',
-      text: '農林',
+      text: 'Agriculture',
     },
-    { key: 'fisher', value: 'fisher', text: '漁業' },
+    { key: 'aquaculture', value: 'aquaculture', text: 'Aquaculture' },
   ],
-  placeholder: '業界を選んで下さい',
+  placeholder: 'Specify your industry',
   name: 'industry',
 };
 
@@ -36,13 +36,13 @@ export const Value = Template.bind({});
 
 Value.args = {
   ...Primary.args,
-  value: 'fisher',
+  value: 'aquaculture',
 };
 
 export const Error = Template.bind({});
 
 Error.args = {
   ...Primary.args,
-  error: '入力は必須です',
+  error: 'Input is required',
   touched: true,
 };

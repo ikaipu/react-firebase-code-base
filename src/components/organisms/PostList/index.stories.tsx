@@ -15,42 +15,42 @@ const Template: Story<Props> = (args) => <Component {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-  title: '注目の投稿',
+  title: 'Pickups',
   posts: [
     {
       id: 'post1',
-      name: 'ブロックチェーン（暗号通貨）DeFIシステムの開発',
+      name: 'Development of a blockchain (cryptocurrency) DeFI system',
       description:
-        'ブロックチェーン（暗号通貨）DeFIシステムの開発投稿です。ブロックチェーン に詳しく、注目を集めている DeFI に詳しい方を探しております。',
+        'This is a development post for a blockchain (cryptocurrency) DeFI system. We are looking for someone who is familiar with blockchain and is familiar with DeFI which is getting a lot of attention.',
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 'post2',
       name:
-        'Google画像検索の自動化。自社メディアの画像を検索して引用元サイトを自動で発見・リストアップ。',
+        'Automated Google Image Search. Searches for images in your own media and automatically finds and lists citation source sites.',
       description:
-        '自社メディア（WordPress）上のオリジナル画像をGoogle画像検索をし、引用掲載している引用元のサイトを発見し、引用元URLをリストアップするまでの作業を自動化したいです。',
+        'I would like to automate the process of doing a Google image search for an original image on my media (WordPress), finding the cited source site, and listing the cited source URL.',
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
       id: 'post3',
       name:
-        'ペネトレーションテスト、脆弱性診断等に係るeラーニングの講師、コンテンツ制作のご依頼',
+        'Request for e-learning instructors and content production related to penetration testing, vulnerability assessment, etc.',
       description:
-        'ネットワークまたはWebシステムに係るペネトレーションテスト、脆弱性診断、標的型攻撃（ホワイトハッカー）の領域で知見、経験があり、eラーニングの講師、コンテンツ制作にご興味がありましたら、ご一報ください。',
+        'If you have knowledge and experience in the areas of penetration testing, vulnerability assessment, and targeted attacks (white hackers) on networks or web systems, and are interested in becoming an e-learning instructor or content creator, please let us know.',
       postNum: 0,
       viewedNum: 0,
       userId: 'user1',
-      createdAt: null,
-      updatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ],
 };
