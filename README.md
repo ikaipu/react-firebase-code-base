@@ -97,7 +97,7 @@ firebase login
 
 Make `.firebaserc` file and put it under the project root folder. You can copy [.firebaserc.sample](.firebaserc.sample) to get the format and change <your-firebase-project-id> to your Firebase Project ID.
 
-Set your Firebase Project ID to Firebase Cil.
+Set your Firebase Project ID to Firebase CLI.
 
 ```sh
 yarn firebase use
