@@ -123,3 +123,36 @@ Open new terminal window and Run
 ```yarn start```
 
 You can browse the App to visit `http://localhost:3000` on your browser.
+
+## Advanced Dev Settings
+
+This is not required to start your development your project.
+
+But it provides CI Automated environment by using [Github Actions](https://github.com/actions) and help you a lot.
+
+### Create Chromatic Project
+
+Refer to [this](https://www.chromatic.com/docs/setup) to set up Chromatic.
+
+### Create Cypress Project
+
+Refer to [this](https://dashboard.cypress.io/signup) to set up Cypress dashboard.
+
+### Set Secret Keys to Your Github Repository
+
+Set these secret keys to your Github Repository. Refer to [this](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+ to set.
+
+| Key                             | Value                                                                                                                                                              |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| BASE64_FIREBASE_SERVICE_ACCOUNT | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk) private key json file encoded by base64                         |
+| CHROMATIC_TOKEN                 | Your [Chromatic project token](https://www.chromatic.com/docs/cli#required-options)                                                                                |
+| CYPRESS_PROJECT_ID              | Your [Cypress Project ID](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                     |
+| CYPRESS_RECORD_KEY              | Your [Cypress record key](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                     |
+| FIREBASE_SERVICE_ACCOUNT        | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk)  private key json file                                          |
+| FIREBASE_TOKEN                  | Your [Firebase CI token](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                      |
+| REACT_APP_FIREBASE_API_KEY      | API key in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)               |
+| REACT_APP_FIREBASE_APP_ID       | APP ID in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)                |
+| REACT_APP_FIREBASE_AUTH_DOMAIN  | Auth Domain in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)           |
+| REACT_APP_FIREBASE_DATABASE_URL | Firebase Database URL in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article) |
+| REACT_APP_FIREBASE_PROJECT_ID   | Firebase Project ID in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)   |
