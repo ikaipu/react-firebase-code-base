@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "<your-firebase-projectId>"
+    "default": "<your-firebase-project-id>"
   }
 }
