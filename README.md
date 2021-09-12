@@ -100,7 +100,7 @@ Make `.firebaserc` file and put it under the project root folder. You can copy [
 Set your Firebase Project ID to Firebase CLI.
 
 ```sh
-yarn firebase use
+firebase use
 ```
 
 #### Set up Dependencies for the Frontend App
