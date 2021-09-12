@@ -37,11 +37,11 @@ jobs:
       - name: Build Cloud Functions
         run: |
           cd functions
-          echo $BASE64_FIREBASE_ADMIN_CONFIG | base64 --decode > ./src/code-base-firebase-adminsdk.json
+          echo $BASE64_FIREBASE_SERVICE_ACCOUNT | base64 --decode > ./src/code-base-firebase-adminsdk.json
           yarn
           yarn build
         env:
-          BASE64_FIREBASE_ADMIN_CONFIG: ${{ secrets.BASE64_FIREBASE_ADMIN_CONFIG }}
+          BASE64_FIREBASE_SERVICE_ACCOUNT: ${{ secrets.BASE64_FIREBASE_SERVICE_ACCOUNT }}
 
       - name: Deploy Cloud Functions And Security Rules
         uses: w9jds/firebase-action@master
