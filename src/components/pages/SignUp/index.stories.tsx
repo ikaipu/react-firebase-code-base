@@ -35,8 +35,8 @@ export const ValidationError = Template.bind({});
 ValidationError.args = {
   ...Primary.args,
   errors: {
-    email: '無効なメールアドレスです',
-    password: 'パスワードは6文字以上で入力して下さい',
+    email: 'Invalid email address',
+    password: 'Password must be more than 6 characters',
     password2: 'Input is required',
   },
   touched: {

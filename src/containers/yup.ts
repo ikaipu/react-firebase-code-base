@@ -3,15 +3,15 @@ import { setLocale } from 'yup';
 setLocale({
   mixed: {
     required: 'Input is required',
-    oneOf: '入力したパスワードが異なります',
-    notType: '正しい値を入力して下さい',
+    oneOf: 'Password is not matched',
+    notType: 'Input is invalid',
   },
   string: {
-    email: '正しいメールアドレスを入力してください',
+    email: 'Email address is invalid',
   },
   number: {
-    integer: '整数値を入力して下さい',
-    min: ({ min }) => `${min}以上の値を入力してください`,
-    max: ({ max }) => `${max}以下の値を入力してください`,
+    integer: 'Enter an integer value',
+    min: ({ min }) => `Enter a number greater than or equal to ${min}`,
+    max: ({ max }) => `Enter a number less than or equal to ${max}`,
   },
 });

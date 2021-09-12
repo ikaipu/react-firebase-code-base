@@ -28,7 +28,7 @@ export const ValidationError = Template.bind({});
 
 ValidationError.args = {
   errors: {
-    email: '無効なメールアドレスです',
+    email: 'Invalid email address',
     password: 'Input is required',
   },
   touched: {

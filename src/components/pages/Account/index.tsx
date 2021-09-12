@@ -60,7 +60,7 @@ const Account: FC<Props> = (props) => {
       <Modal open={succeeded} size="mini" style={{ textAlign: 'center' }}>
         <Modal.Header>Succeeded</Modal.Header>
         <Modal.Content>
-          <Modal.Description>Account info has updated</Modal.Description>
+          <Modal.Description>Succeeded to Submit</Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={onCloseModal}>OK</Button>
@@ -149,7 +149,7 @@ const Account: FC<Props> = (props) => {
                 onBlur={onBlur}
                 onChange={onChange}
                 icon="sticky note"
-                placeholder="des"
+                placeholder="Description"
               />
               <Button
                 data-testid="submit"
@@ -158,7 +158,7 @@ const Account: FC<Props> = (props) => {
                 fluid
                 size="large"
               >
-                登録
+                Submit
               </Button>
             </Segment>
           </Form>

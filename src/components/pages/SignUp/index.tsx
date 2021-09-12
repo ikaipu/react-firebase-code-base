@@ -43,31 +43,31 @@ const SignUp: FC<Props> = (props) => {
   return (
     <>
       <Helmet>
-        <title>会員登録</title>
+        <title>Sign up</title>
       </Helmet>
       <TextForm
-        headerTitle="アカウントを新規作成"
+        headerTitle="Create your account"
         formElements={[
           {
             name: 'email' as const,
             type: 'email',
             icon: 'user',
-            placeholder: 'Eメールアドレス',
+            placeholder: 'Email Address',
           },
           {
             name: 'password' as const,
             type: 'password',
             icon: 'lock',
-            placeholder: 'パスワード',
+            placeholder: 'Password',
           },
           {
             name: 'password2' as const,
             type: 'password',
             icon: 'lock',
-            placeholder: '確認用パスワード',
+            placeholder: 'Confirm Password',
           },
         ]}
-        submitButtonText="会員登録"
+        submitButtonText="Sign up"
         touched={touched}
         errors={errors}
         values={values}
@@ -77,7 +77,7 @@ const SignUp: FC<Props> = (props) => {
         onSubmit={onSubmit}
         bottomContent={
           <Message>
-            登録済の方は <A onClick={goToSignIn}>ログイン</A>
+            Or <A onClick={goToSignIn}>Login</A>
           </Message>
         }
       />

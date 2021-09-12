@@ -47,28 +47,26 @@ export const useAuthAction: AuthHooks['useAuthAction'] = () => {
       .catch((error: Error & { code: string }) => {
         switch (error.code) {
           case 'auth/invalid-email': {
-            throw new Error('正しいメールアドレスを入力して下さい');
+            throw new Error('Email address is invalid');
           }
           case 'auth/user-disabled': {
-            throw new Error('このアカウントは無効化されています');
+            throw new Error('This account is disabled');
           }
           case 'auth/user-not-found':
           case 'auth/wrong-password': {
-            throw new Error(
-              'メールアドレスもしくはパスワードが正しくありません',
-            );
+            throw new Error('Email address or password is wrong');
           }
           case 'auth/network-request-failed': {
-            throw new Error('ネットワークエラーが発生しました');
+            throw new Error('Network error has occurred');
           }
           case 'auth/user-token-expired': {
-            throw new Error('トークンの期限切れです');
+            throw new Error('User token is expired');
           }
           case 'auth/operation-not-allowed': {
-            throw new Error('許可されていない操作です');
+            throw new Error('Operation is not allowed');
           }
           case 'auth/too-many-requests': {
-            throw new Error('短期間で多くのリクエストが発生しました');
+            throw new Error('There were too many request in a shot time');
           }
           default: {
             console.log(error, error.message);
@@ -83,28 +81,28 @@ export const useAuthAction: AuthHooks['useAuthAction'] = () => {
       .catch((error: Error & { code: string }) => {
         switch (error.code) {
           case 'auth/invalid-email': {
-            throw new Error('正しいメールアドレスを入力して下さい');
+            throw new Error('Email address is invalid');
           }
           case 'auth/user-disabled': {
-            throw new Error('このアカウントは無効化されています');
+            throw new Error('This account is disabled');
           }
           case 'auth/email-already-in-use': {
-            throw new Error('メールアドレスはすでに使用されています');
+            throw new Error('This email address is already used');
           }
           case 'auth/weak-password': {
-            throw new Error('パスワードが簡易的過ぎます');
+            throw new Error('Password is too simple');
           }
           case 'auth/network-request-failed': {
-            throw new Error('ネットワークエラーが発生しました');
+            throw new Error('Network error has occurred');
           }
           case 'auth/user-token-expired': {
-            throw new Error('トークンの期限切れです');
+            throw new Error('User token is expired');
           }
           case 'auth/operation-not-allowed': {
-            throw new Error('許可されていない操作です');
+            throw new Error('Operation is not allowed');
           }
           case 'auth/too-many-requests': {
-            throw new Error('短期間で多くのリクエストが発生しました');
+            throw new Error('There were too many request in a shot time');
           }
           default: {
             console.log(error, error.message);
