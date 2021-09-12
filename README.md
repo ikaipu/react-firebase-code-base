@@ -18,7 +18,7 @@ This project is used as an base code platform for web system applications.
 
 - [Firebase](https://firebase.google.com/)
   - [Firebase Auth](https://firebase.google.com/docs/auth)
-  - [Firebase FireStore](https://firebase.google.com/docs/firestore)
+  - [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore)
   - [Firebase Cloud Functions](https://firebase.google.com/docs/functions)
   - [Firebase Storage](https://firebase.google.com/docs/storage)
   - [Firebase Hosting](https://firebase.google.com/docs/hosting)
@@ -44,18 +44,27 @@ Before installing the App development environment, check if you already have the
 
 [How to Install](https://github.com/nodenv/nodenv#installation)
 
-#### Install [Firebase CLI](https://firebase.google.com/docs/cli)
-
-[How to Install](https://firebase.google.com/docs/cli#install_the_firebase_cli)
-
 #### Install [VS Code](https://code.visualstudio.com/) (Not required but recommended)
 
-#### Create your Firebase project
+### Install Develop Environment
 
-This needs your own firebase project.
-Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase) to know how to create Firebase project
+This step is required only for your first settings.
 
-### Set desired npm version
+Once you finish this, You may skip this flow.
+
+#### Clone this repository
+
+```sh
+git clone https://github.com/ikaipu/code-base.git
+```
+
+go to the project root folder
+
+```sh
+cd code-base
+```
+
+#### Set desired npm version
 
 ```sh
 nodenv install
@@ -71,18 +80,42 @@ node -v
 
 Check if the node version is the same with [.node-version](.node-version)
 
-## Set up Dependencies for the Frontend App
+#### Create your Firebase Project
+
+This needs your own firebase project.
+Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase) to know how to create Firebase project.
+
+#### Login to your Firebase Project from CLI
+
+Check if your are on the project root folder.
+
+```sh
+firebase login
+```
+
+#### Initialize Firebase Project
+
+Make `.firebaserc` file and put it under the project root folder. You can copy [.firebaserc.sample](.firebaserc.sample) to get the format and change <your-firebase-project-id> to your Firebase Project ID.
+
+Set your Firebase Project ID to Firebase Cil.
+
+```sh
+yarn firebase use
+```
+
+#### Set up Dependencies for the Frontend App
 
 ```sh
 yarn
 ```
 
-### Put Environment Configuration Files
+#### Put Environment Configuration Files
 
-Put `.env` file under the project root folder.
-Refer to [.env.sample](.env.sample) to see the format.
+Make `.env` file and put it under the project root folder. You can copy [.env.sample](.env.sample) to get the format and change it to your own values.
 
-### Set up Dependencies for the Backend App
+You can set Firebase related values from [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article).
+
+#### Set up Dependencies for the Backend App
 
 ```sh
 cd functions
@@ -92,7 +125,7 @@ cd functions
 yarn
 ```
 
-### Put Firebase Admin Configuration files
+#### Put Firebase Admin Configuration files
 
 Generate and download a firebase admin private key json file.
 Refer to [this flow](https://firebase.google.com/docs/admin/setup#initialize-sdk).
@@ -110,31 +143,19 @@ code-base-firebase-adminsdk.json
 
 Put it under `functions/src` folder
 
-### Build the Backend App
+#### Build the Backend App
 
 ```sh
 yarn build
 ```
 
-## Getting Started
-
-### Please Set up These Before Running it
-
-You don't have to do it if you already did it then skip the section.
-
-#### Login to your firebase project from CLI
+Go back to your project root folder
 
 ```sh
-yarn firebase login
+cd ..
 ```
 
-Choose your firebase project ID.
-
-```sh
-yarn firebase use <your-firebase-project-id>
-```
-
-### Let's Run the Apps Locally
+## Let's Run the App Locally
 
 Check if you're already on the project root folder.
 
@@ -171,16 +192,16 @@ Refer to [this](https://dashboard.cypress.io/signup) to set up Cypress dashboard
 Set these secret keys to your Github Repository. Refer to [this](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
  to set.
 
-| Key                             | Value                                                                                                                                                              |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| BASE64_FIREBASE_SERVICE_ACCOUNT | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk) private key json file encoded by base64                         |
-| CHROMATIC_TOKEN                 | Your [Chromatic project token](https://www.chromatic.com/docs/cli#required-options)                                                                                |
-| CYPRESS_PROJECT_ID              | Your [Cypress Project ID](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                     |
-| CYPRESS_RECORD_KEY              | Your [Cypress record key](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                     |
-| FIREBASE_SERVICE_ACCOUNT        | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk)  private key json file                                          |
-| FIREBASE_TOKEN                  | Your [Firebase CI token](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                      |
-| REACT_APP_FIREBASE_API_KEY      | API key in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)               |
-| REACT_APP_FIREBASE_APP_ID       | APP ID in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)                |
-| REACT_APP_FIREBASE_AUTH_DOMAIN  | Auth Domain in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)           |
-| REACT_APP_FIREBASE_DATABASE_URL | Firebase Database URL in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article) |
-| REACT_APP_FIREBASE_PROJECT_ID   | Firebase Project ID in [Firebase config file downloaded from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)   |
+| Key                             | Value                                                                                                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| BASE64_FIREBASE_SERVICE_ACCOUNT | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk) private key json file encoded by base64                                |
+| CHROMATIC_TOKEN                 | Your [Chromatic project token](https://www.chromatic.com/docs/cli#required-options)                                                                                       |
+| CYPRESS_PROJECT_ID              | Your [Cypress Project ID](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                            |
+| CYPRESS_RECORD_KEY              | Your [Cypress record key](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                            |
+| FIREBASE_SERVICE_ACCOUNT        | Your [Firebase Admin service account](https://firebase.google.com/docs/admin/setup#initialize-sdk)  private key json file                                                 |
+| FIREBASE_TOKEN                  | Your [Firebase CI token](https://firebase.google.com/docs/cli#cli-ci-systems)                                                                                             |
+| REACT_APP_FIREBASE_API_KEY      | API key in [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)               |
+| REACT_APP_FIREBASE_APP_ID       | APP ID in [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)                |
+| REACT_APP_FIREBASE_AUTH_DOMAIN  | Auth Domain in [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)           |
+| REACT_APP_FIREBASE_DATABASE_URL | Firebase Database URL in [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article) |
+| REACT_APP_FIREBASE_PROJECT_ID   | Firebase Project ID in [Firebase config object can be referred from your Firebase console](https://support.google.com/firebase/answer/7015592#zippy=%2Cin-this-article)   |
