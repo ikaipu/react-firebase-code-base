@@ -57,17 +57,25 @@ Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase)
 
 ### Set desired npm version
 
-```nodenv install```
+```sh
+nodenv install
+```
 
-```nodenv local```
+```sh
+nodenv local
+```
 
-```node -v```
+```sh
+node -v
+```
 
 Check if the node version is the same with [.node-version](.node-version)
 
 ## Set up Dependencies for the Frontend App
 
-```yarn```
+```sh
+yarn
+```
 
 ### Put Environment Configuration Files
 
@@ -76,9 +84,13 @@ Refer to [.env.sample](.env.sample) to see the format.
 
 ### Set up Dependencies for the Backend App
 
-```cd functions```
+```sh
+cd functions
+```
 
-```yarn```
+```sh
+yarn
+```
 
 ### Put Firebase Admin Configuration files
 
@@ -86,15 +98,23 @@ Generate and download a firebase admin private key json file.
 Refer to [this flow](https://firebase.google.com/docs/admin/setup#initialize-sdk).
 You may get the json file with like this name.
 
-```<your-project-id>-firebase-adminsdk-XXXXX-XXXXXXXXXX.json```
+```file
+<your-project-id>-firebase-adminsdk-XXXXX-XXXXXXXXXX.json
+```
 
-Change fhe file name to `code-base-firebase-adminsdk.json`
+Change fhe file name to
+
+```file
+code-base-firebase-adminsdk.json
+```
 
 Put it under `functions/src` folder
 
 ### Build the Backend App
 
-```yarn build```
+```sh
+yarn build
+```
 
 ## Getting Started
 
@@ -104,11 +124,15 @@ You don't have to do it if you already did it then skip the section.
 
 #### Login to your firebase project from CLI
 
-```yarn firebase login```
+```sh
+yarn firebase login
+```
 
 Choose your firebase project ID.
 
-```yarn firebase use <your-firebase-project-id>```
+```sh
+yarn firebase use <your-firebase-project-id>
+```
 
 ### Let's Run the Apps Locally
 
@@ -116,11 +140,15 @@ Check if you're already on the project root folder.
 
 Run
 
-```yarn emulate```
+```sh
+yarn emulate
+```
 
 Open new terminal window and Run
 
-```yarn start```
+```sh
+yarn start
+```
 
 You can browse the App to visit `http://localhost:3000` on your browser.
 
