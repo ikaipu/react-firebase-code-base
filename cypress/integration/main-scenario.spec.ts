@@ -2,10 +2,7 @@
 
 context('Main scenario', () => {
   beforeEach(() => {
-    cy.visit('/');
   })
-
-  Cypress.env('FIREBASE_PROJECT_ID')
 
   it('Should pass main scenario', () => {
     cy.request(
@@ -15,6 +12,8 @@ context('Main scenario', () => {
         auth: {bearer: 'owner'}
       });
     cy.wait(4000);
+    cy.visit('/');
+
     // sign-up
     cy.get('[data-testid=a]').click();
     cy.get('[data-testid=email]').type('test@sample.com');
