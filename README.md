@@ -1,6 +1,6 @@
-# Web App Code Base
+# React Firebase Code Base
 
-This project is used as an base code platform for web system applications.
+This project is used as an base code platform of React.js, Firebase configurations.
 
 ## Environments
 
@@ -55,13 +55,13 @@ Once you finish this, You may skip this flow.
 #### Clone this repository
 
 ```sh
-git clone https://github.com/ikaipu/code-base.git
+git clone https://github.com/ikaipu/react-firebase-code-base.git
 ```
 
 go to the project root folder
 
 ```sh
-cd code-base
+cd react-firebase-code-base
 ```
 
 #### Set desired npm version
