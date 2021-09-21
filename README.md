@@ -98,6 +98,16 @@ firebase init emulators
 
 Please press Enters to all question since the project has already settings for the emulators.
 
+#### Install Yarn
+
+This step should be done after nodenv setting above.
+
+Check if your are on the project root folder.
+
+```sh
+npm install -g yarn
+```
+
 #### Create your Firebase Project
 
 This needs your own firebase project.
