@@ -46,6 +46,8 @@ Before installing the App development environment, check if you already have the
 
 #### Install [VS Code](https://code.visualstudio.com/) (Not required but recommended)
 
+#### Install [Java](https://www.java.com)
+
 ### Install Develop Environment
 
 This step is required only for your first settings.
@@ -79,6 +81,22 @@ node -v
 ```
 
 Check if the node version is the same with [.node-version](.node-version)
+
+#### Install firebase and firebase emulators
+
+This step should be done after nodenv setting above.
+
+Check if your are on the project root folder.
+
+```sh
+npm install -g firebase-tools
+```
+
+```sh
+firebase init emulators
+```
+
+Please press Enters to all question since the project has already settings for the emulators.
 
 #### Create your Firebase Project
 
