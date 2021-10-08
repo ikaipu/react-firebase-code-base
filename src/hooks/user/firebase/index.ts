@@ -1,23 +1,25 @@
 import { UserHooks, CreateUserParams } from 'hooks/user';
-import { useFirestore, useFirestoreDoc } from 'reactfire';
+import { useFirestore, useFirestoreDocData } from 'reactfire';
 import { isUser } from 'domains/models/user';
-import { firestore as f } from 'firebase';
+import {
+  addDoc,
+  collection,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+  setDoc,
+  Timestamp,
+} from '@firebase/firestore';
 
 // eslint-disable-next-line import/prefer-default-export
 export const useUser: UserHooks['useUser'] = (id = '') => {
-  const userRef = useFirestore().doc(`users/${id}`);
-  const doc = useFirestoreDoc(userRef);
+  const userDoc = doc(useFirestore(), 'users', id);
 
-  if (!doc.exists) {
-    return { user: null };
-  }
-
-  const firebaseUser = doc.data();
-  const createdAt = firebaseUser?.createdAt as f.Timestamp;
-  const updatedAt = firebaseUser?.updatedAt as f.Timestamp;
-
+  const { data: firestoreUser } = useFirestoreDocData(userDoc);
+  const createdAt = firestoreUser?.createdAt as Timestamp;
+  const updatedAt = firestoreUser?.updatedAt as Timestamp;
   const user = {
-    ...firebaseUser,
+    ...firestoreUser,
     id,
     createdAt: createdAt === null ? null : createdAt.toDate(),
     updatedAt: updatedAt === null ? null : updatedAt.toDate(),
@@ -33,37 +35,40 @@ export const useUser: UserHooks['useUser'] = (id = '') => {
 
 export const useUserAction: UserHooks['useUserAction'] = () => {
   const firestore = useFirestore();
-  const fieldValue = useFirestore.FieldValue;
-  const timestamp = useFirestore.Timestamp;
 
   const createUser = async (id: string, params: CreateUserParams) => {
-    const userRef = firestore.doc(`users/${id}`);
+    const userDoc = doc(firestore, 'users', id);
 
-    await userRef.set({
+    await setDoc(userDoc, {
       ...params,
-      createdAt: fieldValue.serverTimestamp(),
-      updatedAt: fieldValue.serverTimestamp(),
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
     });
   };
 
   const editUser = async (id: string, params: CreateUserParams) => {
-    const userRef = firestore.doc(`users/${id}`);
+    const userDoc = doc(firestore, 'users', id);
 
     await new Promise((resolve) => {
-      const now = timestamp.now();
+      const now = Timestamp.now();
 
-      const unsubscribe = userRef.onSnapshot((snapshot) => {
-        const updatedAt = snapshot.get('updatedAt') as f.Timestamp;
+      const unsubscribe = onSnapshot(userDoc, (snapshot) => {
+        const updatedAt = snapshot.data()?.updatedAt as Timestamp;
         if (now.toMillis() < updatedAt.toMillis()) {
           unsubscribe();
-          resolve();
+          resolve(null);
         }
       });
 
-      const changeLogsRef = firestore.collection(`users/${id}/changeLogs`);
-      void changeLogsRef.add({
+      const changeLogsCollection = collection(
+        firestore,
+        'users',
+        id,
+        'changeLogs',
+      );
+      void addDoc(changeLogsCollection, {
         ...params,
-        createdAt: fieldValue.serverTimestamp(),
+        createdAt: serverTimestamp(),
       });
     });
   };

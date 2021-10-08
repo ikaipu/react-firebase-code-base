@@ -1,6 +1,11 @@
 import { AuthHooks } from 'hooks/auth';
-import { useAuth as useAuthFire, useUser } from 'reactfire';
+import { useUser } from 'reactfire';
 import { isAuth } from 'domains/models/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from '@firebase/auth';
 
 type FirebaseUser = {
   uid: string;
@@ -37,14 +42,13 @@ export const useAuth: AuthHooks['useAuth'] = () => {
 };
 
 export const useAuthAction: AuthHooks['useAuthAction'] = () => {
-  const auth = useAuthFire();
+  const auth = getAuth();
   // const firestore = useFirestore();
   // const fieldValue = useFirestore.FieldValue;
 
   const signIn = async (email: string, password: string) => {
-    await auth
-      .signInWithEmailAndPassword(email, password)
-      .catch((error: Error & { code: string }) => {
+    await signInWithEmailAndPassword(auth, email, password).catch(
+      (error: Error & { code: string }) => {
         switch (error.code) {
           case 'auth/invalid-email': {
             throw new Error('Email address is invalid');
@@ -73,12 +77,12 @@ export const useAuthAction: AuthHooks['useAuthAction'] = () => {
             throw error;
           }
         }
-      });
+      },
+    );
   };
   const signUp = async (email: string, password: string) => {
-    await auth
-      .createUserWithEmailAndPassword(email, password)
-      .catch((error: Error & { code: string }) => {
+    await createUserWithEmailAndPassword(auth, email, password).catch(
+      (error: Error & { code: string }) => {
         switch (error.code) {
           case 'auth/invalid-email': {
             throw new Error('Email address is invalid');
@@ -109,7 +113,8 @@ export const useAuthAction: AuthHooks['useAuthAction'] = () => {
             throw error;
           }
         }
-      });
+      },
+    );
 
     // const user = credencial.user!;
 

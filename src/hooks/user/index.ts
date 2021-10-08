@@ -4,9 +4,7 @@ import { User } from 'domains/models/user';
 import { Base } from 'domains/models/base';
 
 export type UserHooks = {
-  useUser(
-    id?: string,
-  ): {
+  useUser(id?: string): {
     user: User | null;
   };
   useUserAction(): {

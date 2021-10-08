@@ -11,7 +11,9 @@ setLocale({
   },
   number: {
     integer: 'Enter an integer value',
-    min: ({ min }) => `Enter a number greater than or equal to ${min}`,
-    max: ({ max }) => `Enter a number less than or equal to ${max}`,
+    min: ({ min }: { min: number }) =>
+      `Enter a number greater than or equal to ${min}`,
+    max: ({ max }: { max: number }) =>
+      `Enter a number less than or equal to ${max}`,
   },
 });

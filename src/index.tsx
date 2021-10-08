@@ -12,9 +12,7 @@ import FirebaseProvider from 'FirebaseProvider';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const root = document.getElementById('root') as HTMLElement;
-
-ReactDOM.unstable_createRoot(root).render(
+ReactDOM.render(
   <React.StrictMode>
     <FirebaseProvider>
       <AuthHooksContext.Provider value={firestoreAuthHooks}>
@@ -26,6 +24,7 @@ ReactDOM.unstable_createRoot(root).render(
       </AuthHooksContext.Provider>
     </FirebaseProvider>
   </React.StrictMode>,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

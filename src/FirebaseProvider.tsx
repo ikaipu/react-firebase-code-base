@@ -1,39 +1,40 @@
 import React from 'react';
 
-import { FirebaseAppProvider, preloadAuth, preloadFirestore } from 'reactfire';
+import {
+  AuthProvider,
+  FirebaseAppProvider,
+  FirestoreProvider,
+  useFirebaseApp,
+} from 'reactfire';
 
 import firebaseConfig from 'firebase-config';
+import { connectAuthEmulator, getAuth } from '@firebase/auth';
+import { connectFirestoreEmulator, getFirestore } from '@firebase/firestore';
 
 const FirebasePreloader: React.FC = ({ children }) => {
-  preloadAuth({
-    setup: (auth) => {
-      if (process.env.REACT_APP_FIREBASE_EMULATOR === 'true') {
-        auth().useEmulator('http://localhost:9099');
-      }
-    },
-  }).catch((e) => console.error(e));
+  const app = useFirebaseApp();
+  const firestore = getFirestore(app);
+  const auth = getAuth(app);
 
-  preloadFirestore({
-    setup: (firestore) => {
-      if (process.env.REACT_APP_FIREBASE_EMULATOR === 'true') {
-        firestore().settings({
-          host: 'localhost:8080',
-          ssl: false,
-          experimentalForceLongPolling: true,
-        });
-      }
-    },
-  }).catch((e) => console.error(e));
+  // Check for dev/test mode however your app tracks that.
+  // `process.env.NODE_ENV` is a common React pattern
+  if (process.env.NODE_ENV !== 'production') {
+    // Set up emulators
+    connectFirestoreEmulator(firestore, 'localhost', 9000);
+    connectAuthEmulator(auth, 'http://localhost:9099');
+  }
 
-  return <>{children}</>;
-};
-
-const FirebaseProvider: React.FC = ({ children }) => {
   return (
-    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <FirebasePreloader>{children}</FirebasePreloader>
-    </FirebaseAppProvider>
+    <AuthProvider sdk={auth}>
+      <FirestoreProvider sdk={firestore}>{children}</FirestoreProvider>
+    </AuthProvider>
   );
 };
+
+const FirebaseProvider: React.FC = ({ children }) => (
+  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+    <FirebasePreloader>{children}</FirebasePreloader>
+  </FirebaseAppProvider>
+);
 
 export default FirebaseProvider;
