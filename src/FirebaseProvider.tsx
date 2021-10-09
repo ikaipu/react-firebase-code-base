@@ -20,7 +20,7 @@ const FirebasePreloader: React.FC = ({ children }) => {
   // `process.env.NODE_ENV` is a common React pattern
   if (process.env.NODE_ENV !== 'production') {
     // Set up emulators
-    connectFirestoreEmulator(firestore, 'localhost', 9000);
+    connectFirestoreEmulator(firestore, 'localhost', 8080);
     connectAuthEmulator(auth, 'http://localhost:9099');
   }
 

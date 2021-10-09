@@ -25,7 +25,7 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/account" element={<CreateAccount />} />
-          <Route path="*" element={<MenuBar />}>
+          <Route path="/" element={<MenuBar />}>
             <Route path="/home" element={<Home />} />
             <Route path="/create-post" element={<PostForm />} />
             <Route path="/edit-account" element={<EditAccount />} />

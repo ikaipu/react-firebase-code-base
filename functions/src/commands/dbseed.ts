@@ -1,4 +1,4 @@
-import commander from 'commander';
+import { program } from 'commander';
 import admin from 'firebase-admin';
 import fs from 'fs';
 import parse from 'csv-parse/lib/sync';
@@ -45,8 +45,8 @@ const uploadSeed = async (collection: string, seedFile: string) => {
     }
   }
 };
-commander
+program
   .version('0.1.0', '-v, --version')
   .arguments('<collection> <seedFile>')
   .action(uploadSeed);
-commander.parse(process.argv);
+program.parse(process.argv);

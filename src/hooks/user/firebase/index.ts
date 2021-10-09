@@ -16,8 +16,14 @@ export const useUser: UserHooks['useUser'] = (id = '') => {
   const userDoc = doc(useFirestore(), 'users', id);
 
   const { data: firestoreUser } = useFirestoreDocData(userDoc);
+
+  if (!firestoreUser) {
+    return { user: null };
+  }
+
   const createdAt = firestoreUser?.createdAt as Timestamp;
   const updatedAt = firestoreUser?.updatedAt as Timestamp;
+
   const user = {
     ...firestoreUser,
     id,

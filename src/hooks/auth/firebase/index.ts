@@ -26,7 +26,7 @@ const isFirebaseUser = (arg: unknown): arg is FirebaseUser => {
 
 // eslint-disable-next-line import/prefer-default-export
 export const useAuth: AuthHooks['useAuth'] = () => {
-  const user = useUser();
+  const { data: user } = useUser();
 
   if (!isFirebaseUser(user)) {
     throw Error('API type error: FirebaseUser');
