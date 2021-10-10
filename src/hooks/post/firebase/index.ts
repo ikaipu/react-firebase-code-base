@@ -20,6 +20,10 @@ export const usePosts: PostHooks['usePosts'] = () => {
     idField: 'id',
   });
 
+  if (posts === undefined) {
+    return { posts: [] };
+  }
+
   if (!isPosts(posts)) {
     console.log(posts);
     throw Error('API type error: Posts');

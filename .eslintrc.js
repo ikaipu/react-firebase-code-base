@@ -97,12 +97,18 @@ module.exports = {
         explicitSpread: 'ignore',
       },
     ],
+
     // note you must disable the base rule as it can report incorrect errors
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/prefer-default-export': 'off',
     "react/prop-types": "off", // Since we do not use prop-types
-    "react/require-default-props": "off" // Since we do not use prop-types
+    "react/require-default-props": "off", // Since we do not use prop-types
+
+    // https://stackoverflow.com/questions/63961803/eslint-says-all-enums-in-typescript-app-are-already-declared-in-the-upper-scope
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
+
   },
   overrides: [
     {
