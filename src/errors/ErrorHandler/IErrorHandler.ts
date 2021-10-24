@@ -1,5 +1,7 @@
+import { RequestState } from 'config/requestState';
+
 interface IErrorHandler {
-  setState: (state: string) => void;
+  setRequestState: (state: RequestState) => void;
   setErrorState(): void;
 }
 

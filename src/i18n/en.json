@@ -1,0 +1,116 @@
+{
+  "translation": {
+    "settings": {
+      "SystemMailSetting": {
+        "mailSender" : {
+          "form": {
+            "title": "System Mail Sender",
+            "senderAddress": {
+              "label": "Sender address (system mail)",
+              "placeholder": "aaa@bbb.com"
+            }
+          }
+        },
+        "mailReceivers" : {
+          "form": {
+            "title": "Notification Mail Receiver",
+            "placeholder": "aaa@bbb.com"
+          }
+        },
+        "notificationReceiver" : {
+          "title": "Notification receiver"
+        }
+      }
+    },
+    "authentication": {
+      "SignIn": {
+        "title": "Sign In",
+        "form": {
+          "email": {
+            "label": "Email Address",
+            "placeholder": "aaa@bbb.com"
+          },
+          "password": {
+            "label": "Password"
+          },
+          "button": {
+            "submit": "Sign In"
+          }
+        },
+        "link": {
+          "signUp": "Sign Up",
+          "top": "TOP"
+        },
+        "navigation": {
+          "forgotPassword": "Forgot your password?",
+          "signup": "Don't have an account? Sign Up",
+          "top": "TOP"
+        }
+      }
+    },
+    "error": {
+      "ServerError": {
+        "title": "Unexpected Server Error",
+        "description": "An error has occurred and \nwe're working to fix the problem! \nIf you need immediate help, please contact us.\n If it isn't urgent matter, please try again later."
+      },
+      "TimeoutError": {
+        "title": "Network Error",
+        "description": "The connection has timed out.\nPlease check your internet connection\nand please try again later."
+      }
+    },
+    "validation" :{
+      "alphaNumeric": "{{ field }} must contain only alphanumeric characters.",
+      "countryCodeRequired": "Please select country code.",
+      "emailFormat": "Not a valid email format.",
+      "includeLowercase": "{{ field }} must contain at least 1 lowercase character.",
+      "includeUppercase": "{{ field }} must contain at least 1 uppercase character.",
+      "includeNumber": "{{ field }} must contain at least 1 numeric character.",
+      "includeSpecialCharacter": "{{ field }} must contain at least 1 special character.",
+      "isNotNull": "{{ field }} is a required field.",
+      "isNumber": "{{ field }} should be a number value.",
+      "isUnique": "This {{ field }} is already in use.",
+      "isValidLoginInformation": "Invalid email or password.",
+      "lengthGreaterThanEqual": "{{ field }} must contain at least {{ length }} characters.",
+      "invalidNumber": "{{ field }} should not be {{ number }} .",
+      "maximum": "The maximum value of {{ field }} is {{ maximum }}.",
+      "maxDeposit": "Max Deposit should be at least Min Deposit.",
+      "minimum": "The minimum value of {{ field }} is {{ minimum }}.",
+      "minDeposit": "Min Deposit should be at most Max Deposit.",
+      "noUpperCaseCharacters": "{{ field }} must not contain uppercase characters.",
+      "noSpecifiedCharacter": "{{ characters }} are not allowed in {{ field }}.",
+      "notExceedBalance": "{{ field }} exceeds the balance of the {{ target }}",
+      "onlyCharacters": "{{ field }} must contain only alphabet characters.",
+      "onlyNumbers": "{{ field }} must contain only numbers.",
+      "passwordEqualToConfirm": "Password and Confirm Password are not match.",
+      "validValue": "This {{ field }} is invalid.",
+      "validInvitationCode": "This invitation code is invalid.",
+      "validInviter": "The inviter is not active or not authorized to invite.",
+      "validOTP": "The code does not match.",
+      "validAddress": "{{ field }} must not contain invalid symbols.",
+      "validPhoneNumber": "Invalid phone number",
+      "auth/wrong-password": "Invalid email or password.",
+      "auth/user-not-found": "Invalid email or password.",
+      "400-1201": "This username is already in use.",
+      "400-1202": "This email address is already in use.",
+      "400-5801": "Product Name is already in use."
+    },
+    "general":{
+      "date": {
+        "month": {
+          "1": "Jan",
+          "2": "Feb",
+          "3": "Mar",
+          "4": "Apr",
+          "5": "May",
+          "6": "Jun",
+          "7": "Jul",
+          "8": "Aug",
+          "9": "Sep",
+          "10": "Oct",
+          "11": "Nov",
+          "12": "Dec"
+        }
+      }
+    }
+  }
+}

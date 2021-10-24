@@ -1,6 +1,4 @@
-import Joi from 'joi';
-
-import { AuthProps, authPropsFormat } from './AuthProps';
+import { AuthProps } from './AuthProps';
 
 export class Auth {
   private id: string;
@@ -18,13 +16,3 @@ export class Auth {
     email: this.email,
   });
 }
-
-const isAuth = (args: unknown): args is Auth => {
-  const auth = args as Auth;
-
-  const result = Joi.object(authPropsFormat).validate(auth);
-
-  return !result.error;
-};
-
-export { isAuth };

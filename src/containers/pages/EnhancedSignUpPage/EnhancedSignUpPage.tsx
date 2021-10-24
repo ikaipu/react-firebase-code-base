@@ -1,15 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 
-import { useAuthAction } from 'hooks/auth';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import SignUp from 'components/pages/SignUp';
 import { useNavigate } from 'react-router';
+import SignUpContext from 'providers/authenticate/SignUpProvider/SignUpContext';
+
+import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
+import { RequestStateType } from 'config/requestState';
 
 const EnhancedSignUp: FC = () => {
   const navigate = useNavigate();
-  const { signUp } = useAuthAction();
-  const [message, setMessage] = useState('');
+  const { signUp, requestState } = useContext(SignUpContext);
   const formik = useFormik({
     initialValues: { email: '', password: '', password2: '' },
     validationSchema: Yup.object({
@@ -20,16 +22,25 @@ const EnhancedSignUp: FC = () => {
         .required(),
     }),
     onSubmit: async (values: { email?: string; password?: string }) => {
-      setMessage('');
-
       const { email, password } = values;
 
-      await signUp(email!, password!).catch((error: Error) => {
-        console.log(error);
-        setMessage(error.message);
-      });
+      await signUp(email!, password!);
     },
   });
+
+  const handleErrorMessage = () => {
+    if (requestState.state !== RequestStateType.FAILED) {
+      return '';
+    }
+
+    switch (requestState.errorCode) {
+      case ErrorCodeType.FIREBASE_AUTH_EMAIL_IN_USE: {
+        return 'This email address is already used';
+      }
+      default:
+        return requestState.errorCode;
+    }
+  };
 
   return (
     <SignUp
@@ -39,7 +50,7 @@ const EnhancedSignUp: FC = () => {
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}
       onSubmit={formik.handleSubmit}
-      errorMessage={message}
+      errorMessage={handleErrorMessage()}
       goToSignIn={() => navigate('sign-in')}
     />
   );
