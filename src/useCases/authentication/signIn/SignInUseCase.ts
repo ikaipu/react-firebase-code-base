@@ -1,5 +1,5 @@
 import { Auth } from 'domains/Auth/Auth';
-import IAuthRepository from 'repository/auth/IAuthRepository';
+import IAuthRepository from 'repositories/auth/IAuthRepository';
 import ISignInUseCase from './ISignInUseCase';
 
 class SignInUseCase implements ISignInUseCase {

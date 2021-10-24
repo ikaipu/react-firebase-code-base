@@ -4,7 +4,7 @@ import {
   RequestState,
   RequestStateType,
 } from 'config/requestState';
-import FirebaseAuthRepository from 'repository/auth/FirebaseAuthRepository';
+import FirebaseAuthRepository from 'repositories/auth/FirebaseAuthRepository';
 import SignUpUseCase from 'useCases/authentication/signUp/SignUpUseCase';
 import { checkInternetConnection } from 'utils/helpers/connection';
 import ErrorHandler from 'errors/ErrorHandler/ErrorHandler';

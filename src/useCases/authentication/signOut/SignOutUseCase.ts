@@ -1,4 +1,4 @@
-import IAuthRepository from 'repository/auth/IAuthRepository';
+import IAuthRepository from 'repositories/auth/IAuthRepository';
 import ISignOutUseCase from './ISignOutUseCase';
 
 class SignOutUseCase implements ISignOutUseCase {

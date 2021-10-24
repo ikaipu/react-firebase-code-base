@@ -13,7 +13,4 @@ export const authPropsFormat = {
       tlds: { allow: false },
     })
     .required(),
-  createdAt: Joi.number().empty(''),
-
-  updatedAt: Joi.number().empty(''),
 };

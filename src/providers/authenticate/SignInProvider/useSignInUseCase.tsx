@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FirebaseAuthRepository from 'repository/auth/FirebaseAuthRepository';
+import FirebaseAuthRepository from 'repositories/auth/FirebaseAuthRepository';
 import SignInUseCase from 'useCases/authentication/signIn/SignInUseCase';
 import { checkInternetConnection } from 'utils/helpers/connection';
 import ErrorHandler from 'errors/ErrorHandler/ErrorHandler';
