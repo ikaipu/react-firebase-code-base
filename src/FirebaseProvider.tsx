@@ -7,7 +7,7 @@ import {
   useFirebaseApp,
 } from 'reactfire';
 
-import firebaseConfig from 'firebase-config';
+import firebaseConfig from 'firebaseConfig';
 import { connectAuthEmulator, getAuth } from '@firebase/auth';
 import { connectFirestoreEmulator, getFirestore } from '@firebase/firestore';
 

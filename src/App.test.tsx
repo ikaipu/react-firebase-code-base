@@ -1,4 +1,4 @@
-import firebaseConfig from 'firebase-config';
+import firebaseConfig from 'firebaseConfig';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { FirebaseAppProvider } from 'reactfire';
