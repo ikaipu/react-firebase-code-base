@@ -22,9 +22,9 @@ import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
 class Collection {
   private collection: CollectionReference;
 
-  constructor() {
+  constructor(path: string) {
     const firestore = getFirestore();
-    this.collection = collection(firestore, '');
+    this.collection = collection(firestore, path);
   }
 
   public getCollectionReference = (): CollectionReference => this.collection;
@@ -151,7 +151,7 @@ class Collection {
   };
 
   public subscribeAll = <T>(
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (docs: QueryDocumentSnapshot[]) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
@@ -169,7 +169,7 @@ class Collection {
 
   public subscribeSpecific = <T>(
     id: string,
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
@@ -188,7 +188,7 @@ class Collection {
   };
 
   public subscribeNewData = <T>(
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
@@ -216,7 +216,7 @@ class Collection {
 
   public subscribeOneByUniqueField = <T>(
     params: { [key: string]: string },
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (doc: DocumentSnapshot | null) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
@@ -242,7 +242,7 @@ class Collection {
 
   subscribeSpecificWithNoData = <T>(
     id: string,
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
@@ -264,7 +264,7 @@ class Collection {
 
   public subscribeByFields = <T>(
     params: { [key: string]: string },
-    setter: (data: T) => T,
+    setter: (data: T) => void,
     converter: (docs: QueryDocumentSnapshot[]) => T,
     setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
