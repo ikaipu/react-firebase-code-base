@@ -19,7 +19,6 @@ export class User extends BaseModelWithTimestamp {
 
   public getProps(): UserProps {
     return {
-      id: this.getId(),
       name: this.name,
       address: this.address,
       phoneNumber: this.phoneNumber,

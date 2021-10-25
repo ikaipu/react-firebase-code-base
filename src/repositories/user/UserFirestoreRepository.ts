@@ -36,7 +36,7 @@ class UserFirestoreRepository implements IUserRepository {
   };
 
   public create = async (user: User): Promise<User> => {
-    await this.userCollection.create(null, user.getProps());
+    await this.userCollection.create(user.getId(), user.getProps());
 
     return user;
   };

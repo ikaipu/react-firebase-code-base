@@ -25,7 +25,7 @@ const EditAccount: FC = () => {
     validationSchema: Yup.object({
       name: Yup.string().required(),
       address: Yup.string().required(),
-      phoneNumber: Yup.number(),
+      phoneNumber: Yup.string(),
       industry: Yup.string().required(),
       description: Yup.string(),
     }),
@@ -43,8 +43,7 @@ const EditAccount: FC = () => {
       const params = {
         name: name!,
         address: address!,
-        phoneNumber:
-          typeof Number(phoneNumber) === 'number' ? Number(phoneNumber) : null,
+        phoneNumber: phoneNumber === '' ? null : phoneNumber!,
         industry: industry!,
         description: description === '' ? null : description!,
       };

@@ -1,19 +1,20 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Account, { AccountStringMap } from 'components/pages/Account';
-import { useUserAction, useUser } from 'hooks/user';
+import { useUser } from 'hooks/user';
 import { useAuth } from 'hooks/auth';
 import { Navigate } from 'react-router';
 
 import { isUser } from 'domains/models/user';
+import CreateAccountContext from 'providers/account/CreateAccountProvider/CreateAccountContext';
+import { RequestStateType } from 'config/requestState';
 
 const CreateAccount: FC = () => {
   const { auth } = useAuth();
   const { user } = useUser(auth?.id);
-  const { createUser } = useUserAction();
-  const [message, setMessage] = useState('');
+  const { createAccount, requestState } = useContext(CreateAccountContext);
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -25,13 +26,11 @@ const CreateAccount: FC = () => {
     validationSchema: Yup.object({
       name: Yup.string().required(),
       address: Yup.string().required(),
-      phoneNumber: Yup.number(),
+      phoneNumber: Yup.string(),
       industry: Yup.string().required(),
       description: Yup.string(),
     }),
     onSubmit: async (values: AccountStringMap) => {
-      setMessage('');
-
       if (auth === null) {
         return;
       }
@@ -43,19 +42,25 @@ const CreateAccount: FC = () => {
       const params = {
         name: name!,
         address: address!,
-        phoneNumber:
-          typeof Number(phoneNumber) === 'number' ? Number(phoneNumber) : null,
+        phoneNumber: phoneNumber === '' ? null : phoneNumber!,
         industry: industry!,
         description: description === '' ? null : description!,
-        createdAt: Date(),
       };
 
-      await createUser(id, params).catch((error: Error) => {
-        console.log(error);
-        setMessage(error.message);
-      });
+      await createAccount(id, params);
     },
   });
+
+  const handleErrorMessage = () => {
+    if (requestState.state !== RequestStateType.FAILED) {
+      return '';
+    }
+
+    switch (requestState.errorCode) {
+      default:
+        return requestState.errorCode;
+    }
+  };
 
   if (user && isUser(user)) {
     return <Navigate to="/home" />;
@@ -69,7 +74,7 @@ const CreateAccount: FC = () => {
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}
       onSubmit={formik.handleSubmit}
-      errorMessage={message}
+      errorMessage={handleErrorMessage()}
     />
   );
 };

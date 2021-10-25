@@ -1,7 +1,7 @@
 import SystemErrorHandler from 'providers/error/SystemErrorHandler';
 import React, { FC } from 'react';
 import SignInContext from './SignInContext';
-import useSignInUseCase from './useSignInUseCase';
+import useSignIn from './useSignIn';
 
 export type SignInProviderProps = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export type SignInProviderProps = {
 const SignInProvider: FC<SignInProviderProps> = ({
   children,
 }: SignInProviderProps) => {
-  const { requestState, setRequestState, signIn } = useSignInUseCase();
+  const { requestState, setRequestState, signIn } = useSignIn();
 
   return (
     <SignInContext.Provider value={{ requestState, signIn }}>

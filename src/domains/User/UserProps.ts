@@ -1,7 +1,4 @@
-import {
-  BaseModelProps,
-  baseModelPropsFormat,
-} from 'domains/BaseModel/BaseModelProps';
+import { baseModelPropsFormat } from 'domains/BaseModel/BaseModelProps';
 import {
   TimestampProps,
   timestampPropsFormat,
@@ -14,8 +11,7 @@ export type UserProps = {
   phoneNumber: string | null;
   industry: string;
   description: string | null;
-} & TimestampProps &
-  BaseModelProps;
+} & TimestampProps;
 
 export const userPropsFormat = {
   name: Joi.string().required(),

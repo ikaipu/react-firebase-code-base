@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
 export type TimestampProps = {
-  createdAt: number;
-  updatedAt: number;
+  createdAt?: number;
+  updatedAt?: number;
 };
 
 export const timestampPropsFormat = {

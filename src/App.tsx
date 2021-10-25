@@ -5,12 +5,12 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthCheck } from 'reactfire';
 import SignIn from 'containers/pages/SignIn';
 import EnhancedSignUpPage from 'containers/pages/EnhancedSignUpPage';
-import CreateAccount from 'containers/pages/CreateAccount';
 import EditAccount from 'containers/pages/EditAccount';
 import 'containers/yup';
 import PostForm from 'containers/pages/PostForm';
 import MenuBar from 'containers/pages/MenuBar';
 import { ModalProvider } from 'react-modal-hook';
+import EnhancedCreateAccountPage from 'containers/pages/EnhancedCreateAccountPage';
 
 const App: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           }
         >
           <Routes>
-            <Route path="/account" element={<CreateAccount />} />
+            <Route path="/account" element={<EnhancedCreateAccountPage />} />
             <Route path="/" element={<MenuBar />}>
               <Route path="/home" element={<Home />} />
               <Route path="/create-post" element={<PostForm />} />

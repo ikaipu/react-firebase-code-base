@@ -12,7 +12,7 @@ service cloud.firestore {
     function isValidUserParams(user) {
       return 'name' in user && user.name is string
         && 'address' in user && user.address is string
-        && 'phoneNumber' in user && (user.phoneNumber is number || user.phoneNumber == null)
+        && 'phoneNumber' in user && (user.phoneNumber is string || user.phoneNumber == null)
         && 'industry' in user && user.industry is string
         && 'description' in user && (user.description is string || user.description == null)
     }

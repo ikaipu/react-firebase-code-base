@@ -1,7 +1,7 @@
 import { ErrorIdType } from 'errors/ErrorMessage/ErrorMessage';
 import SystemErrorFactory from 'errors/ErrorFactory/SystemErrorFactory';
 import Joi from 'joi';
-import IModelFactory from 'domains/BaseModel/IModelFactory';
+import IModelFactory from 'domains/BaseModel/IDomainFactory';
 import { UserProps, userPropsFormat } from './UserProps';
 import { User } from './User';
 

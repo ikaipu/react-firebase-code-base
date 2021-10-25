@@ -15,6 +15,7 @@ import {
   where,
   WriteBatch,
   Unsubscribe,
+  serverTimestamp,
 } from '@firebase/firestore';
 import { createErrorRequestState, RequestState } from 'config/requestState';
 import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
@@ -86,8 +87,17 @@ class Collection {
   ): Promise<void | Transaction | WriteBatch> => {
     const reference = id ? doc(this.collection, id) : doc(this.collection);
 
+    const fieldsWithUpdatedTimestamp = {
+      ...fields,
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    };
+
     if (!atomic) {
-      const writeResult = await setDoc<DocumentData>(reference, fields);
+      const writeResult = await setDoc<DocumentData>(
+        reference,
+        fieldsWithUpdatedTimestamp,
+      );
 
       return writeResult;
     }
@@ -95,13 +105,13 @@ class Collection {
     if (atomic instanceof Transaction) {
       const t = atomic;
 
-      return t.set<DocumentData>(reference, fields);
+      return t.set<DocumentData>(reference, fieldsWithUpdatedTimestamp);
     }
 
     if (atomic instanceof WriteBatch) {
       const batch = atomic;
 
-      return batch.set<DocumentData>(reference, fields);
+      return batch.set<DocumentData>(reference, fieldsWithUpdatedTimestamp);
     }
 
     return undefined;
@@ -114,13 +124,18 @@ class Collection {
   ): Promise<Transaction | WriteBatch | void> => {
     const docRef = doc(this.collection, id);
 
+    const fieldsWithUpdatedTimestamp = {
+      ...fields,
+      updatedAt: serverTimestamp(),
+    };
+
     if (!atomic) {
-      return setDoc(docRef, fields, { merge: true });
+      return setDoc(docRef, fieldsWithUpdatedTimestamp, { merge: true });
     }
 
     if (atomic instanceof Transaction) {
       const t = atomic;
-      const updateResult = t.set(docRef, fields, {
+      const updateResult = t.set(docRef, fieldsWithUpdatedTimestamp, {
         merge: true,
       });
 
@@ -128,7 +143,9 @@ class Collection {
     }
     if (atomic instanceof WriteBatch) {
       const batch = atomic;
-      const updateResult = batch.set(docRef, fields, { merge: true });
+      const updateResult = batch.set(docRef, fieldsWithUpdatedTimestamp, {
+        merge: true,
+      });
 
       return updateResult;
     }
