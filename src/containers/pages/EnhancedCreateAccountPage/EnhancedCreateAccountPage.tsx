@@ -4,17 +4,18 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Account, { AccountStringMap } from 'components/pages/Account';
 import { useUser } from 'hooks/user';
-import { useAuth } from 'hooks/auth';
 import { Navigate } from 'react-router';
 
 import { isUser } from 'domains/models/user';
 import CreateAccountContext from 'providers/account/CreateAccountProvider/CreateAccountContext';
 import { RequestStateType } from 'config/requestState';
+import AuthContext from 'providers/authenticate/AuthProvider/AuthContext';
 
 const CreateAccount: FC = () => {
-  const { auth } = useAuth();
-  const { user } = useUser(auth?.id);
+  const { auth } = useContext(AuthContext);
+  const { user } = useUser(auth?.getId());
   const { createAccount, requestState } = useContext(CreateAccountContext);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -35,7 +36,7 @@ const CreateAccount: FC = () => {
         return;
       }
 
-      const { id } = auth;
+      const id = auth.getId();
 
       const { name, address, phoneNumber, industry, description } = values;
 

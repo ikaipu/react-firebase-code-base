@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   createRequestState,
@@ -14,8 +13,7 @@ export interface CreateAccountContextProps {
 
 const CreateAccountContext = React.createContext<CreateAccountContextProps>({
   requestState: createRequestState(RequestStateType.INITIAL),
-  createAccount: (id: string, params: UserProps) =>
-    new Promise(() => undefined),
+  createAccount: () => new Promise(() => undefined),
 });
 
 export default CreateAccountContext;

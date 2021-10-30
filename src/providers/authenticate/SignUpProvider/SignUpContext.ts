@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   createRequestState,
@@ -13,7 +12,7 @@ export interface SignUpContextProps {
 
 const SignUpContext = React.createContext<SignUpContextProps>({
   requestState: createRequestState(RequestStateType.INITIAL),
-  signUp: (email: string, password: string) => new Promise(() => undefined),
+  signUp: () => new Promise(() => undefined),
 });
 
 export default SignUpContext;

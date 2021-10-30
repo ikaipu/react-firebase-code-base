@@ -12,7 +12,7 @@ import {
 } from '@firebase/firestore';
 
 // eslint-disable-next-line import/prefer-default-export
-export const useUser: UserHooks['useUser'] = (id = '') => {
+export const useUser: UserHooks['useUser'] = (id = '1') => {
   const userDoc = doc(useFirestore(), 'users', id);
 
   const { data: firestoreUser } = useFirestoreDocData(userDoc);

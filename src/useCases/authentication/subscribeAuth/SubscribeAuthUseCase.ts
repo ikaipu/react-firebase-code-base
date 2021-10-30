@@ -1,15 +1,15 @@
 import { Auth } from 'domains/Auth/Auth';
 import IAuthRepository from 'repositories/auth/IAuthRepository';
-import ICheckAuthStateUseCase from './ICheckAuthUseCase';
+import ISubscribeAuthUseCase from './ISubscribeAuthUseCase';
 
-class CheckAuthStateUseCase implements ICheckAuthStateUseCase {
+class SubscribeAuthUseCase implements ISubscribeAuthUseCase {
   private authRepository: IAuthRepository;
 
   constructor(authRepository: IAuthRepository) {
     this.authRepository = authRepository;
   }
 
-  public checkAuthState = (
+  public subscribeAuth = (
     setter: (auth: Auth | null) => void,
   ): (() => void) => {
     const auth = this.authRepository.subscribe(setter);
@@ -17,4 +17,4 @@ class CheckAuthStateUseCase implements ICheckAuthStateUseCase {
     return auth;
   };
 }
-export default CheckAuthStateUseCase;
+export default SubscribeAuthUseCase;
