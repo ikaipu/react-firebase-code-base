@@ -2,20 +2,17 @@ import { useState } from 'react';
 import FirebaseAuthRepository from 'repositories/auth/FirebaseAuthRepository';
 import SignInUseCase from 'useCases/authentication/signIn/SignInUseCase';
 import { checkInternetConnection } from 'utils/helpers/connection';
-import ErrorHandler from 'errors/ErrorHandler/ErrorHandler';
-import {
-  createRequestState,
-  RequestState,
-  RequestStateType,
-} from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
+import ServerError from 'errors/ServerError/ServerError';
+import { ExceptionType } from 'errors/ErrorMessage/ErrorMessage';
 
 const useSignInUseCase = (): {
-  requestState: RequestState;
-  setRequestState: (requestState: RequestState) => void;
+  requestState: RequestStateType;
+  setRequestState: (requestState: RequestStateType) => void;
   signIn: (email: string, password: string) => Promise<void>;
 } => {
-  const [requestState, setRequestState] = useState<RequestState>(
-    createRequestState(RequestStateType.INITIAL),
+  const [requestState, setRequestState] = useState<RequestStateType>(
+    RequestStateType.INITIAL,
   );
 
   // Repository, Auth
@@ -25,17 +22,35 @@ const useSignInUseCase = (): {
   const useCase = new SignInUseCase(authRepository);
 
   const signIn = async (email: string, password: string) => {
-    setRequestState(createRequestState(RequestStateType.IS_LOADING));
+    setRequestState(RequestStateType.IS_LOADING);
 
     try {
       checkInternetConnection();
 
       await useCase.signIn(email, password);
 
-      setRequestState(createRequestState(RequestStateType.SUCCESS));
+      setRequestState(RequestStateType.SUCCESS);
     } catch (error) {
-      const handler = new ErrorHandler(error, setRequestState);
-      handler.setErrorState();
+      if (error instanceof ServerError) {
+        switch (error.exceptionType) {
+          case ExceptionType.invalidEmail:
+          case ExceptionType.wrongEmailOrPassword: {
+            setRequestState(RequestStateType.WRONG_EMAIL_OR_PASSWORD);
+            break;
+          }
+          case ExceptionType.userDisabled: {
+            setRequestState(RequestStateType.USER_DISABLED);
+            break;
+          }
+          default: {
+            console.log(error);
+            setRequestState(RequestStateType.FAILED);
+          }
+        }
+      } else {
+        console.log(error);
+        setRequestState(RequestStateType.FAILED);
+      }
     }
   };
 

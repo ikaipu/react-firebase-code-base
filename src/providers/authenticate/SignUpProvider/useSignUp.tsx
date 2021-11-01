@@ -1,21 +1,18 @@
 import { useState } from 'react';
-import {
-  createRequestState,
-  RequestState,
-  RequestStateType,
-} from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
 import FirebaseAuthRepository from 'repositories/auth/FirebaseAuthRepository';
 import SignUpUseCase from 'useCases/authentication/signUp/SignUpUseCase';
 import { checkInternetConnection } from 'utils/helpers/connection';
-import ErrorHandler from 'errors/ErrorHandler/ErrorHandler';
+import ServerError from 'errors/ServerError/ServerError';
+import { ExceptionType } from 'errors/ErrorMessage/ErrorMessage';
 
 const useSignUpUseCase = (): {
-  requestState: RequestState;
-  setRequestState: (requestState: RequestState) => void;
+  requestState: RequestStateType;
+  setRequestState: (requestState: RequestStateType) => void;
   signUp: (email: string, password: string) => Promise<void>;
 } => {
-  const [requestState, setRequestState] = useState<RequestState>(
-    createRequestState(RequestStateType.INITIAL),
+  const [requestState, setRequestState] = useState<RequestStateType>(
+    RequestStateType.INITIAL,
   );
 
   // Repository, Auth
@@ -25,17 +22,30 @@ const useSignUpUseCase = (): {
   const useCase = new SignUpUseCase(authRepository);
 
   const signUp = async (email: string, password: string) => {
-    setRequestState(createRequestState(RequestStateType.IS_LOADING));
+    setRequestState(RequestStateType.IS_LOADING);
 
     try {
       checkInternetConnection();
 
       await useCase.signUp(email, password);
 
-      setRequestState(createRequestState(RequestStateType.SUCCESS));
+      setRequestState(RequestStateType.SUCCESS);
     } catch (error) {
-      const handler = new ErrorHandler(error, setRequestState);
-      handler.setErrorState();
+      if (error instanceof ServerError) {
+        switch (error.exceptionType) {
+          case ExceptionType.userExists: {
+            setRequestState(RequestStateType.USER_EXISTS);
+            break;
+          }
+          default: {
+            console.log(error);
+            setRequestState(RequestStateType.FAILED);
+          }
+        }
+      } else {
+        console.log(error);
+        setRequestState(RequestStateType.FAILED);
+      }
     }
   };
 

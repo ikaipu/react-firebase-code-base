@@ -11,6 +11,7 @@ export enum ExceptionType {
   wrongEmailOrPassword = 'wrongEmailOrPassword',
   tokenExpired = 'tokenExpired',
   manyRequests = 'manyRequests',
+  userExists = 'userExists',
 
   // 500
   invalidDataFound = 'invalidDataFound',

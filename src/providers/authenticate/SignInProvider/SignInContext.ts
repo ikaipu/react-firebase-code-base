@@ -1,17 +1,13 @@
 import React from 'react';
-import {
-  createRequestState,
-  RequestState,
-  RequestStateType,
-} from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
 
 export interface SignInContextProps {
-  requestState: RequestState;
+  requestState: RequestStateType;
   signIn: (email: string, password: string) => Promise<void>;
 }
 
 const SignInContext = React.createContext<SignInContextProps>({
-  requestState: createRequestState(RequestStateType.INITIAL),
+  requestState: RequestStateType.INITIAL,
   signIn: () => new Promise(() => undefined),
 });
 

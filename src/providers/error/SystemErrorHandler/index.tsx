@@ -1,11 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useModal } from 'react-modal-hook';
-import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
-import {
-  createRequestState,
-  RequestState,
-  RequestStateType,
-} from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
 import { SystemErrorHandlerContext } from './SystemErrorHandlerContext';
 
 // Type
@@ -17,8 +12,8 @@ import ErrorMessageModal from '../../../components/organisms/modal/error/ErrorMe
 
 export type SystemErrorHandlerProps = {
   children: React.ReactNode;
-  requestState: RequestState;
-  setRequestState: (requestState: RequestState) => void;
+  requestState: RequestStateType;
+  setRequestState: (requestState: RequestStateType) => void;
 };
 
 const SystemErrorHandler: FC<SystemErrorHandlerProps> = ({
@@ -26,41 +21,24 @@ const SystemErrorHandler: FC<SystemErrorHandlerProps> = ({
   requestState,
   setRequestState,
 }: SystemErrorHandlerProps) => {
-  //  const { signOut } = useContext(SignOutContext);
-
-  const { state, errorCode } = requestState;
-
   const [showModal, hideModal] = useModal(
     () => (
       <ErrorMessageModal
-        state={errorCode}
+        state={`Error: ${requestState}`}
         closeAction={() => {
-          setRequestState(createRequestState(RequestStateType.INITIAL));
+          setRequestState(RequestStateType.INITIAL);
           hideModal();
         }}
       />
     ),
-    [state],
+    [requestState],
   );
 
   useEffect(() => {
-    switch (errorCode) {
-      // case ErrorCodeType.UNAUTHORIZED_ERROR:
-      //   signOut();
-      //  break;
-      case ErrorCodeType.SERVER_ERROR:
-      case ErrorCodeType.REQUEST_TIMEOUT_ERROR:
-        showModal();
-        break;
-      default:
+    if (requestState === RequestStateType.FAILED) {
+      showModal();
     }
-  }, [errorCode, showModal]);
-
-  if (
-    errorCode === ErrorCodeType.SERVER_ERROR ||
-    errorCode === ErrorCodeType.REQUEST_TIMEOUT_ERROR
-  )
-    return <></>;
+  }, [requestState, showModal]);
 
   return (
     <SystemErrorHandlerContext.Provider

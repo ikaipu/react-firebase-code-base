@@ -1,8 +1,11 @@
 import { ExceptionType } from 'errors/ErrorMessage/ErrorMessage';
 
 class FirebaseErrorMapper {
-  static mapErrorExceptionType(exceptionType: string): string {
+  static mapErrorExceptionType(exceptionType: string): ExceptionType {
     switch (exceptionType) {
+      case 'auth/email-already-in-use': {
+        return ExceptionType.userExists;
+      }
       case 'auth/invalid-email': {
         return ExceptionType.invalidEmail;
       }

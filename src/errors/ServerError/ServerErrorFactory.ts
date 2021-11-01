@@ -8,6 +8,7 @@ import { ServerErrorProps, serverErrorPropsFormat } from './ServerErrorProps';
 class ServerErrorFactory {
   static create = (props: unknown): ServerError => {
     const serverErrorProps = props as ServerErrorProps;
+
     const result = Joi.object(serverErrorPropsFormat).validate(
       serverErrorProps,
     );

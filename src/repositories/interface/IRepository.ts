@@ -1,4 +1,4 @@
-import { RequestState } from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
 
 export interface IFindAll<T> {
   findAll: () => Promise<T>;
@@ -53,7 +53,7 @@ export interface IUpsert<T> {
 export interface ISubscribeAll<T> {
   subscribeAll: (
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => void;
 }
 
@@ -61,7 +61,7 @@ export interface ISubscribeById<T> {
   subscribeById: (
     id: string,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => () => void;
 }
 
@@ -69,7 +69,7 @@ export interface ISubscribeByUserId<T> {
   subscribeByUserId: (
     userId: string,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => () => void;
 }
 
@@ -77,7 +77,7 @@ export interface ISetById<T> {
   setById: (
     id: string,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => void;
 }
 
@@ -86,7 +86,7 @@ export interface ISubscribeByPrimaryKey<T, U extends { [key: string]: any }> {
   subscribeByPrimaryKey: (
     fields: U,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => void;
 }
 
@@ -95,7 +95,7 @@ export interface ISubscribeByFields<T, U extends { [key: string]: any }> {
   subscribeByFields: (
     fields: U,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => void;
 }
 
@@ -104,7 +104,7 @@ export interface ISubscribeNewData<T, U extends { [key: string]: any }> {
   subscribeNewData: (
     fields: U,
     setter: (data: T) => void,
-    setRequestState: (requestState: RequestState) => void,
+    setRequestState: (requestState: RequestStateType) => void,
   ) => void;
 }
 

@@ -1,3 +1,4 @@
+import SystemErrorHandler from 'providers/error/SystemErrorHandler';
 import React, { FC } from 'react';
 import AuthContext from './AuthContext';
 import useAuth from './useAuth';
@@ -9,10 +10,17 @@ export type AuthProviderProps = {
 const AuthProvider: FC<AuthProviderProps> = ({
   children,
 }: AuthProviderProps) => {
-  const { auth } = useAuth();
+  const { auth, requestState, setRequestState } = useAuth();
 
   return (
-    <AuthContext.Provider value={{ auth }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ auth }}>
+      <SystemErrorHandler
+        requestState={requestState}
+        setRequestState={setRequestState}
+      >
+        {children}
+      </SystemErrorHandler>
+    </AuthContext.Provider>
   );
 };
 export default AuthProvider;

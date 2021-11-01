@@ -53,13 +53,13 @@ const CreateAccount: FC = () => {
   });
 
   const handleErrorMessage = () => {
-    if (requestState.state !== RequestStateType.FAILED) {
+    if (requestState !== RequestStateType.FAILED) {
       return '';
     }
 
-    switch (requestState.errorCode) {
+    switch (requestState) {
       default:
-        return requestState.errorCode;
+        return requestState;
     }
   };
 

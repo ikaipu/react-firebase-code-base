@@ -1,18 +1,14 @@
 import React from 'react';
-import {
-  createRequestState,
-  RequestState,
-  RequestStateType,
-} from 'config/requestState';
+import { RequestStateType } from 'config/requestState';
 import { UserProps } from 'domains/User/UserProps';
 
 export interface CreateAccountContextProps {
-  requestState: RequestState;
+  requestState: RequestStateType;
   createAccount: (id: string, params: UserProps) => Promise<void>;
 }
 
 const CreateAccountContext = React.createContext<CreateAccountContextProps>({
-  requestState: createRequestState(RequestStateType.INITIAL),
+  requestState: RequestStateType.INITIAL,
   createAccount: () => new Promise(() => undefined),
 });
 

@@ -5,8 +5,6 @@ import * as Yup from 'yup';
 import SignUp from 'components/pages/SignUp';
 import { useNavigate } from 'react-router';
 import SignUpContext from 'providers/authenticate/SignUpProvider/SignUpContext';
-
-import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
 import { RequestStateType } from 'config/requestState';
 
 const EnhancedSignUp: FC = () => {
@@ -29,16 +27,13 @@ const EnhancedSignUp: FC = () => {
   });
 
   const handleErrorMessage = () => {
-    if (requestState.state !== RequestStateType.FAILED) {
-      return '';
-    }
-
-    switch (requestState.errorCode) {
-      case ErrorCodeType.FIREBASE_AUTH_EMAIL_IN_USE: {
+    switch (requestState) {
+      case RequestStateType.USER_EXISTS: {
         return 'This email address is already used';
       }
+
       default:
-        return requestState.errorCode;
+        return '';
     }
   };
 
