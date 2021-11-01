@@ -1,6 +1,6 @@
 import SystemError from 'errors/SystemError/SystemError';
-import InvalidDataFoundError from '../SystemError/InvalidDataFoundError';
-import InvalidArgumentError from '../SystemError/InvalidArgumentError';
+import InvalidDataFoundError from './InvalidDataFoundError';
+import InvalidArgumentError from './InvalidArgumentError';
 import {
   ERROR_MESSAGE,
   ErrorIdType,
@@ -14,9 +14,9 @@ class SystemErrorFactory {
     type: ExceptionType,
   ): SystemError => {
     switch (type) {
-      case ExceptionType.invalidArgumentError:
+      case ExceptionType.invalidArgument:
         return new InvalidArgumentError(code, message);
-      case ExceptionType.invalidDataFoundError:
+      case ExceptionType.invalidDataFound:
         return new InvalidDataFoundError(code, message);
       default:
         return new InvalidDataFoundError(
@@ -33,9 +33,9 @@ class SystemErrorFactory {
     const { code, message, type } = ERROR_MESSAGE[ErrorIdType[errorId]];
 
     switch (type) {
-      case ExceptionType.invalidArgumentError:
+      case ExceptionType.invalidArgument:
         return new InvalidArgumentError(code, message, params);
-      case ExceptionType.invalidDataFoundError:
+      case ExceptionType.invalidDataFound:
         return new InvalidDataFoundError(code, message, params);
       default:
         return new InvalidDataFoundError(

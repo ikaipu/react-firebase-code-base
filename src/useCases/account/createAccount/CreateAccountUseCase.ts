@@ -18,8 +18,6 @@ class CreateAccountUseCase implements ICreateAccountUseCase {
   };
 
   public executeCreate = (user: User): Promise<User> => {
-    console.log(user);
-
     return this.userRepository.create(user);
   };
 }

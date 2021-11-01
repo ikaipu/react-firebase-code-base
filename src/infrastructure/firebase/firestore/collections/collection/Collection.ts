@@ -17,8 +17,7 @@ import {
   Unsubscribe,
   serverTimestamp,
 } from '@firebase/firestore';
-import { createErrorRequestState, RequestState } from 'config/requestState';
-import { ErrorCodeType } from 'errors/ErrorHandler/ErrorCode.type';
+import ServerErrorFactory from 'errors/ServerError/ServerErrorFactory';
 
 class Collection {
   private collection: CollectionReference;
@@ -170,7 +169,6 @@ class Collection {
   public subscribeAll = <T>(
     setter: (data: T) => void,
     converter: (docs: QueryDocumentSnapshot[]) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     return onSnapshot(this.collection, (querySnapshot) => {
       try {
@@ -179,7 +177,10 @@ class Collection {
         if (process.env.NODE_ENV !== 'production')
           // eslint-disable-next-line no-console
           console.log(error);
-        setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+
+        const serverError = ServerErrorFactory.create(error);
+
+        throw serverError;
       }
     });
   };
@@ -188,7 +189,6 @@ class Collection {
     id: string,
     setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     const docRef = doc(this.collection, id);
 
@@ -199,7 +199,9 @@ class Collection {
         if (process.env.NODE_ENV !== 'production')
           // eslint-disable-next-line no-console
           console.log(error);
-        setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+        const serverError = ServerErrorFactory.create(error);
+
+        throw serverError;
       }
     });
   };
@@ -207,7 +209,6 @@ class Collection {
   public subscribeNewData = <T>(
     setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     let state = 'initial';
 
@@ -225,7 +226,9 @@ class Collection {
             // eslint-disable-next-line no-console
             console.log(error);
 
-          setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+          const serverError = ServerErrorFactory.create(error);
+
+          throw serverError;
         }
       });
     });
@@ -235,7 +238,6 @@ class Collection {
     params: { [key: string]: string },
     setter: (data: T) => void,
     converter: (doc: DocumentSnapshot | null) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     const conditions = Object.keys(params).map((key) => {
       return where(key, '==', params[key]);
@@ -252,7 +254,9 @@ class Collection {
           // eslint-disable-next-line no-console
           console.log(error);
 
-        setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+        const serverError = ServerErrorFactory.create(error);
+
+        throw serverError;
       }
     });
   };
@@ -261,7 +265,6 @@ class Collection {
     id: string,
     setter: (data: T) => void,
     converter: (doc: DocumentSnapshot) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     const docRef = doc(this.collection, id);
 
@@ -273,7 +276,9 @@ class Collection {
           // eslint-disable-next-line no-console
           console.log(error);
 
-        setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+        const serverError = ServerErrorFactory.create(error);
+
+        throw serverError;
       }
       setter(converter(document));
     });
@@ -283,7 +288,6 @@ class Collection {
     params: { [key: string]: string },
     setter: (data: T) => void,
     converter: (docs: QueryDocumentSnapshot[]) => T,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     const conditions = Object.keys(params).map((key) => {
       return where(key, '==', params[key]);
@@ -299,7 +303,9 @@ class Collection {
           // eslint-disable-next-line no-console
           console.log(error);
 
-        setRequestState(createErrorRequestState(ErrorCodeType.SERVER_ERROR));
+        const serverError = ServerErrorFactory.create(error);
+
+        throw serverError;
       }
     });
   };

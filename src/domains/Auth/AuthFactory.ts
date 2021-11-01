@@ -1,5 +1,5 @@
 import { ErrorIdType } from 'errors/ErrorMessage/ErrorMessage';
-import SystemErrorFactory from 'errors/ErrorFactory/SystemErrorFactory';
+import SystemErrorFactory from 'errors/SystemError/SystemErrorFactory';
 import Joi from 'joi';
 import { AuthProps, authPropsFormat } from './AuthProps';
 import { Auth } from './Auth';

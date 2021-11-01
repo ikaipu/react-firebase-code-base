@@ -1,6 +1,6 @@
 import SystemError from 'errors/SystemError/SystemError';
-import BadRequestError from '../ClientError/BadRequestError';
-import UnauthorizedError from '../ClientError/UnauthorizedError';
+import BadRequestError from './BadRequestError';
+import UnauthorizedError from './UnauthorizedError';
 import InvalidArgumentError from '../SystemError/InvalidArgumentError';
 import {
   ERROR_MESSAGE,
@@ -30,9 +30,9 @@ class ClientErrorFactory {
     const { code, message, type } = ERROR_MESSAGE[ErrorIdType[errorId]];
 
     switch (type) {
-      case ExceptionType.unauthorizedError:
+      case ExceptionType.unauthorized:
         return new UnauthorizedError(code, message, params);
-      case ExceptionType.badRequestError:
+      case ExceptionType.badRequest:
         return new BadRequestError(code, message, params);
       default:
         return new InvalidArgumentError(

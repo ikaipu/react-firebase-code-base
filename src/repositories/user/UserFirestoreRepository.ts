@@ -4,7 +4,6 @@ import {
   Unsubscribe,
 } from '@firebase/firestore';
 import Collection from 'infrastructure/firebase/firestore/collections/collection/Collection';
-import { RequestState } from 'config/requestState';
 import { User } from 'domains/User/User';
 import UserFactory from 'domains/User/UserFactory';
 import IUserRepository from './IUserRepository';
@@ -19,7 +18,6 @@ class UserFirestoreRepository implements IUserRepository {
   public subscribeById = (
     id: string,
     setter: (data: User) => void,
-    setRequestState: (requestState: RequestState) => void,
   ): Unsubscribe => {
     const converter = (snapshot: DocumentSnapshot<DocumentData>) => {
       const args = snapshot.data();
@@ -27,12 +25,7 @@ class UserFirestoreRepository implements IUserRepository {
       return UserFactory.create(snapshot.id, args);
     };
 
-    return this.userCollection.subscribeSpecific(
-      id,
-      setter,
-      converter,
-      setRequestState,
-    );
+    return this.userCollection.subscribeSpecific(id, setter, converter);
   };
 
   public create = async (user: User): Promise<User> => {
