@@ -6,7 +6,7 @@ import { Auth } from 'domains/Auth/Auth';
 import { RequestStateType } from 'config/requestState';
 
 const useAuth = (): {
-  auth: null | Auth;
+  auth: Auth | null;
   requestState: RequestStateType;
   setRequestState: (requestState: RequestStateType) => void;
 } => {

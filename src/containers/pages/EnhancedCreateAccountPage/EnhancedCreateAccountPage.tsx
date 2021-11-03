@@ -3,17 +3,12 @@ import React, { FC, useContext } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Account, { AccountStringMap } from 'components/pages/Account';
-import { useUser } from 'hooks/user';
-import { Navigate } from 'react-router';
-
-import { isUser } from 'domains/models/user';
-import CreateAccountContext from 'providers/account/CreateAccountProvider/CreateAccountContext';
 import { RequestStateType } from 'config/requestState';
 import AuthContext from 'providers/authenticate/AuthProvider/AuthContext';
+import CreateAccountContext from 'providers/account/CreateAccountProvider/CreateAccountContext';
 
 const CreateAccount: FC = () => {
   const { auth } = useContext(AuthContext);
-  const { user } = useUser(auth?.getId());
   const { createAccount, requestState } = useContext(CreateAccountContext);
 
   const formik = useFormik({
@@ -62,10 +57,6 @@ const CreateAccount: FC = () => {
         return requestState;
     }
   };
-
-  if (user && isUser(user)) {
-    return <Navigate to="/home" />;
-  }
 
   return (
     <Account

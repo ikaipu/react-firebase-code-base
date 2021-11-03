@@ -5,7 +5,7 @@ import { UserProps } from 'domains/User/UserProps';
 import UserFirestoreRepository from 'repositories/user/UserFirestoreRepository';
 import CreateUserUseCase from 'useCases/account/createAccount/CreateAccountUseCase';
 
-const useCreateAccountUseCase = (): {
+const useCreateAccount = (): {
   requestState: RequestStateType;
   setRequestState: (requestState: RequestStateType) => void;
   createAccount: (id: string, params: UserProps) => Promise<void>;
@@ -43,4 +43,4 @@ const useCreateAccountUseCase = (): {
   };
 };
 
-export default useCreateAccountUseCase;
+export default useCreateAccount;
