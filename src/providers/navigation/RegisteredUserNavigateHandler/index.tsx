@@ -1,4 +1,4 @@
-import AuthProvider from 'providers/authenticate/AuthProvider';
+import AuthProvider from 'providers/domain/AuthProvider';
 import React, { FC } from 'react';
 import RegisteredUserNavigateEffect from './RegisteredUserNavigateEffect';
 

@@ -29,7 +29,7 @@ const FormInput: React.FC<Props> = (props) => {
   } = props;
 
   return (
-    <div>
+    <>
       <Form.Input
         data-testid={name}
         id={name}
@@ -48,7 +48,7 @@ const FormInput: React.FC<Props> = (props) => {
         }}
       />
       <ErrorMessage touched={touched} error={error} />
-    </div>
+    </>
   );
 };
 

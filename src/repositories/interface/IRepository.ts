@@ -1,5 +1,3 @@
-import { RequestStateType } from 'config/requestState';
-
 export interface IFindAll<T> {
   findAll: () => Promise<T>;
 }
@@ -51,61 +49,34 @@ export interface IUpsert<T> {
 }
 
 export interface ISubscribeAll<T> {
-  subscribeAll: (
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => void;
+  subscribeAll: (setter: (data: T) => void) => void;
 }
 
 export interface ISubscribeById<T> {
-  subscribeById: (
-    id: string,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => () => void;
+  subscribeById: (id: string, setter: (data: T) => void) => () => void;
 }
 
 export interface ISubscribeByUserId<T> {
-  subscribeByUserId: (
-    userId: string,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => () => void;
+  subscribeByUserId: (userId: string, setter: (data: T) => void) => () => void;
 }
 
 export interface ISetById<T> {
-  setById: (
-    id: string,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => void;
+  setById: (id: string, setter: (data: T) => void) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ISubscribeByPrimaryKey<T, U extends { [key: string]: any }> {
-  subscribeByPrimaryKey: (
-    fields: U,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => void;
+  subscribeByPrimaryKey: (fields: U, setter: (data: T) => void) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ISubscribeByFields<T, U extends { [key: string]: any }> {
-  subscribeByFields: (
-    fields: U,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => void;
+  subscribeByFields: (fields: U, setter: (data: T) => void) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ISubscribeNewData<T, U extends { [key: string]: any }> {
-  subscribeNewData: (
-    fields: U,
-    setter: (data: T) => void,
-    setRequestState: (requestState: RequestStateType) => void,
-  ) => void;
+  subscribeNewData: (fields: U, setter: (data: T) => void) => void;
 }
 
 export interface IAbstract {

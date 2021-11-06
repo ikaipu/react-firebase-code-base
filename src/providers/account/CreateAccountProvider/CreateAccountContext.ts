@@ -4,7 +4,7 @@ import { UserProps } from 'domains/User/UserProps';
 
 export interface CreateAccountContextProps {
   requestState: RequestStateType;
-  createAccount: (id: string, params: UserProps) => Promise<void>;
+  createAccount: (params: UserProps) => Promise<void>;
 }
 
 const CreateAccountContext = React.createContext<CreateAccountContextProps>({

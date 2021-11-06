@@ -1,7 +1,6 @@
-import SystemErrorHandler from 'providers/error/SystemErrorHandler';
+import AuthProvider from 'providers/domain/AuthProvider';
 import React, { FC } from 'react';
-import CreateAccountContext from './CreateAccountContext';
-import useCreateAccount from './useCreateAccount';
+import CreateAccountContextProvider from './CreateAccountContextProvider';
 
 export type CreateAccountProviderProps = {
   children: React.ReactNode;
@@ -10,17 +9,10 @@ export type CreateAccountProviderProps = {
 const CreateAccountProvider: FC<CreateAccountProviderProps> = ({
   children,
 }: CreateAccountProviderProps) => {
-  const { requestState, setRequestState, createAccount } = useCreateAccount();
-
   return (
-    <CreateAccountContext.Provider value={{ requestState, createAccount }}>
-      <SystemErrorHandler
-        requestState={requestState}
-        setRequestState={setRequestState}
-      >
-        {children}
-      </SystemErrorHandler>
-    </CreateAccountContext.Provider>
+    <AuthProvider>
+      <CreateAccountContextProvider>{children}</CreateAccountContextProvider>
+    </AuthProvider>
   );
 };
 export default CreateAccountProvider;

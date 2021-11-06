@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import CreateAccountProvider from 'providers/account/CreateAccountProvider';
+import CreateAccountProvider from 'providers/account/CreateAccountProvider/CreateAccountContextProvider';
 import RegisteredUserNavigateHandler from 'providers/navigation/RegisteredUserNavigateHandler';
-import AuthProvider from 'providers/authenticate/AuthProvider';
+import AuthProvider from 'providers/domain/AuthProvider';
 import CreateAccountPage from './EnhancedCreateAccountPage';
 
 const EnhancedCreateAccountPage: FC = () => (

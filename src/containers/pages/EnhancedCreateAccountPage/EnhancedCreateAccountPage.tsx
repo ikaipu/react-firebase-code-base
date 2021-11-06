@@ -4,11 +4,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Account, { AccountStringMap } from 'components/pages/Account';
 import { RequestStateType } from 'config/requestState';
-import AuthContext from 'providers/authenticate/AuthProvider/AuthContext';
 import CreateAccountContext from 'providers/account/CreateAccountProvider/CreateAccountContext';
 
 const CreateAccount: FC = () => {
-  const { auth } = useContext(AuthContext);
   const { createAccount, requestState } = useContext(CreateAccountContext);
 
   const formik = useFormik({
@@ -27,12 +25,6 @@ const CreateAccount: FC = () => {
       description: Yup.string(),
     }),
     onSubmit: async (values: AccountStringMap) => {
-      if (auth === null) {
-        return;
-      }
-
-      const id = auth.getId();
-
       const { name, address, phoneNumber, industry, description } = values;
 
       const params = {
@@ -43,7 +35,7 @@ const CreateAccount: FC = () => {
         description: description === '' ? null : description!,
       };
 
-      await createAccount(id, params);
+      await createAccount(params);
     },
   });
 

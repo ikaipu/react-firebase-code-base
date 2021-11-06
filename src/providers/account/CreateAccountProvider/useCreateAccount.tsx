@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { checkInternetConnection } from 'utils/helpers/connection';
 import { RequestStateType } from 'config/requestState';
 import { UserProps } from 'domains/User/UserProps';
 import UserFirestoreRepository from 'repositories/user/UserFirestoreRepository';
 import CreateUserUseCase from 'useCases/account/createAccount/CreateAccountUseCase';
+import AuthContext from 'providers/domain/AuthProvider/AuthContext';
 
 const useCreateAccount = (): {
   requestState: RequestStateType;
   setRequestState: (requestState: RequestStateType) => void;
-  createAccount: (id: string, params: UserProps) => Promise<void>;
+  createAccount: (params: UserProps) => Promise<void>;
 } => {
   const [requestState, setRequestState] = useState<RequestStateType>(
     RequestStateType.INITIAL,
   );
+  const { auth } = useContext(AuthContext);
 
   // Repository, User
   const userRepository = new UserFirestoreRepository();
@@ -20,8 +22,14 @@ const useCreateAccount = (): {
   // UseCase
   const useCase = new CreateUserUseCase(userRepository);
 
-  const createAccount = async (id: string, params: UserProps) => {
+  const createAccount = async (params: UserProps) => {
     setRequestState(RequestStateType.IS_LOADING);
+
+    if (auth === null) {
+      return;
+    }
+
+    const id = auth.getId();
 
     try {
       checkInternetConnection();
