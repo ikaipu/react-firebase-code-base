@@ -45,6 +45,7 @@ const FormInput: React.FC<Props> = (props) => {
         fluid
         style={{
           marginBottom: 0,
+          backgroundColor: 'red',
         }}
       />
       <ErrorMessage touched={touched} error={error} />

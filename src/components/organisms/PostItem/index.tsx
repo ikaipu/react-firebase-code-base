@@ -12,7 +12,7 @@ const PostItem: React.FC<Props> = (props) => {
 
   return (
     <Card fluid>
-      <Card.Content>
+      <Card.Content style={{ background: 'red' }}>
         <Card.Header>{name}</Card.Header>
         <Card.Meta>
           <Label content="New" color="green" />
