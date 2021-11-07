@@ -11,10 +11,10 @@ const UserCard: React.FC<Props> = (props) => {
 
   return (
     <Card data-testid="user-card">
-      <Card.Content textAlign="center">
+      <Card.Content>
         <Card.Header>{name}</Card.Header>
       </Card.Content>
-      <Card.Content extra textAlign="center">
+      <Card.Content>
         <Button data-testid="user-edit-button" onClick={onClick}>
           Edit User Info
         </Button>
