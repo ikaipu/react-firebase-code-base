@@ -82,6 +82,11 @@ node -v
 
 Check if the node version is the same with [.node-version](.node-version)
 
+#### Create your Firebase Project
+
+This needs your own firebase project.
+Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase) to know how to create Firebase project.
+
 #### Install firebase and firebase emulators
 
 This step should be done after nodenv setting above.
@@ -107,11 +112,6 @@ Check if your are on the project root folder.
 ```sh
 npm install -g yarn
 ```
-
-#### Create your Firebase Project
-
-This needs your own firebase project.
-Please refer [this](https://cloud.google.com/firestore/docs/client/get-firebase) to know how to create Firebase project.
 
 #### Login to your Firebase Project from CLI
 
